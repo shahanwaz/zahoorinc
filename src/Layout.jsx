@@ -3,12 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Home, Calendar, Users, User, MessageCircle, Bell, Menu } from "lucide-react";
 import RightSidebar from "./components/layout/RightSidebar";
+import DesktopHeader from "./components/layout/DesktopHeader";
+import DesktopSidebar from "./components/layout/DesktopSidebar";
 import { User as UserEntity } from "@/entities/User";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const [currentUser, setCurrentUser] = useState(null);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'system');
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -23,21 +26,113 @@ export default function Layout({ children, currentPageName }) {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const user = await UserEntity.me(); // Using UserEntity as per alias
+        const user = await UserEntity.me();
         setCurrentUser(user);
       } catch (error) {
         console.error("Error loading user:", error);
       }
     };
     loadUser();
+
+    // Handle window resize for responsive layout
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Pages where bottom navigation should be hidden
   const hideBottomNavPages = ["Splash", "Intro", "Onboarding", "QuestionDetail", "GoLive"];
   const shouldHideBottomNav = hideBottomNavPages.includes(currentPageName);
 
+  // Full-screen pages (no layout)
   if (currentPageName === "Splash" || currentPageName === "Intro" || currentPageName === "Onboarding") {
     return children;
+  }
+
+  // Desktop Layout (≥1024px)
+  if (isDesktop) {
+    return (
+      <div className="min-h-screen bg-emerald-50 dark:bg-gray-900">
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran:wght@400;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+          
+          .font-quranic, .font-arabic {
+            font-family: 'Amiri Quran', 'Scheherazade New', serif;
+            line-height: 2.2;
+            letter-spacing: 0.02em;
+          }
+
+          .font-arabic-large {
+            font-family: 'Amiri Quran', 'Scheherazade New', serif;
+            line-height: 2.5;
+            letter-spacing: 0.03em;
+          }
+
+          .font-arabic-title {
+            font-family: 'Amiri Quran', 'Scheherazade New', serif;
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+          }
+
+          :root {
+            --bg-primary: #f0fdf6;
+            --bg-secondary: #ffffff;
+            --bg-accent: #ddfbeb;
+            --text-primary: #165135;
+            --text-secondary: #187d4c;
+            --text-accent: #1b9e5d;
+            --border-primary: #bdf5d9;
+            --border-secondary: #ddfbeb;
+            --heading-color: #19623f;
+            --primary-emerald: #2bd27f;
+            --accent-emerald: #4fd994;
+            --muted-emerald: #1b9e5d;
+            --light-emerald: #ddfbeb;
+            --white-bg: #ffffff;
+            --text-muted: #4b5563;
+          }
+
+          .dark {
+            --bg-primary: #0d1a14;
+            --bg-secondary: #11221c;
+            --bg-accent: #1a382a;
+            --text-primary: #e6f9f0;
+            --text-secondary: #a7f3d0;
+            --text-accent: #6ee7b7;
+            --border-primary: #2d5a47;
+            --border-secondary: #244838;
+            --heading-color: #d1fae5;
+            --primary-emerald: #34d399;
+            --accent-emerald: #10b981;
+            --muted-emerald: #065f46;
+            --light-emerald: #1a382a;
+            --white-bg: #11221c;
+            --text-muted: #9ca3af;
+          }
+          
+          body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+          }
+
+          h1, h2, h3, h4, h5, h6 {
+            color: var(--heading-color);
+          }
+        `}</style>
+
+        <DesktopHeader />
+        <DesktopSidebar />
+        
+        <main className="ml-64 mt-[73px] min-h-screen">
+          <div className="max-w-[1600px] mx-auto p-6">
+            {children}
+          </div>
+        </main>
+      </div>
+    );
   }
 
   const navItems = [
@@ -50,6 +145,7 @@ export default function Layout({ children, currentPageName }) {
 
   const isActive = (path) => location.pathname === createPageUrl(path);
 
+  // Mobile Layout (<1024px)
   return (
     <div className="min-h-screen bg-emerald-50 text-emerald-900 dark:bg-gray-900 dark:text-emerald-100 font-sans">
       <style>{`
