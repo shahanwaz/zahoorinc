@@ -47,12 +47,12 @@ export default function Layout({ children, currentPageName }) {
   const shouldHideBottomNav = hideBottomNavPages.includes(currentPageName);
 
   // Full-screen pages (no layout)
-  if (currentPageName === "Splash" || currentPageName === "Intro" || currentPageName === "Onboarding") {
+  if (currentPageName === "Splash" || currentPageName === "Intro" || currentPageName === "Onboarding" || currentPageName === "LandingPage") {
     return children;
   }
 
-  // Show Landing Page for non-authenticated desktop users (completely standalone - no sidebar/header)
-  if (isDesktop && !currentUser && currentPageName !== "Splash" && currentPageName !== "Intro" && currentPageName !== "Onboarding") {
+  // Redirect non-authenticated desktop users to Landing Page
+  if (isDesktop && !currentUser) {
     const LandingPage = React.lazy(() => import('./pages/LandingPage'));
     return (
       <React.Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">
