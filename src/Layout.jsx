@@ -57,6 +57,8 @@ export default function Layout({ children, currentPageName }) {
     return (
       <React.Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-emerald-600 text-lg">Loading Zahoor...</div>
+      </div>}>
+        <LandingPage />
       </React.Suspense>
     );
   }
