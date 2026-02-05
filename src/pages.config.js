@@ -115,6 +115,7 @@ import GoLive from './pages/GoLive';
 import MajalisLectures from './pages/MajalisLectures';
 import SavedItems from './pages/SavedItems';
 import MediaSubcategory from './pages/MediaSubcategory';
+import LandingPage from './pages/LandingPage';
 import __Layout from './Layout.jsx';
 
 
@@ -187,6 +188,7 @@ export const PAGES = {
     "MajalisLectures": MajalisLectures,
     "SavedItems": SavedItems,
     "MediaSubcategory": MediaSubcategory,
+    "LandingPage": LandingPage,
 }
 
 export const pagesConfig = {

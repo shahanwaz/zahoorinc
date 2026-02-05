@@ -51,6 +51,19 @@ export default function Layout({ children, currentPageName }) {
     return children;
   }
 
+  // Show Landing Page for non-authenticated desktop users
+  if (isDesktop && !currentUser && currentPageName !== "Splash" && currentPageName !== "Intro" && currentPageName !== "Onboarding") {
+    // Import LandingPage dynamically
+    const LandingPage = React.lazy(() => import('./pages/LandingPage'));
+    return (
+      <React.Suspense fallback={<div className="min-h-screen bg-emerald-50 flex items-center justify-center">
+        <div className="text-emerald-600">Loading...</div>
+      </div>}>
+        <LandingPage />
+      </React.Suspense>
+    );
+  }
+
   // Desktop Layout (≥1024px)
   if (isDesktop) {
     return (
