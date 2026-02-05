@@ -51,21 +51,18 @@ export default function Layout({ children, currentPageName }) {
     return children;
   }
 
-  // Show Landing Page for non-authenticated desktop users
+  // Show Landing Page for non-authenticated desktop users (completely standalone - no sidebar/header)
   if (isDesktop && !currentUser && currentPageName !== "Splash" && currentPageName !== "Intro" && currentPageName !== "Onboarding") {
-    // Import LandingPage dynamically
     const LandingPage = React.lazy(() => import('./pages/LandingPage'));
     return (
-      <React.Suspense fallback={<div className="min-h-screen bg-emerald-50 flex items-center justify-center">
-        <div className="text-emerald-600">Loading...</div>
-      </div>}>
-        <LandingPage />
+      <React.Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-emerald-600 text-lg">Loading Zahoor...</div>
       </React.Suspense>
     );
   }
 
-  // Desktop Layout (≥1024px)
-  if (isDesktop) {
+  // Desktop Layout with Sidebar & Header (≥1024px - authenticated users only)
+  if (isDesktop && currentUser) {
     return (
       <div className="min-h-screen bg-emerald-50 dark:bg-gray-900">
         <style>{`
