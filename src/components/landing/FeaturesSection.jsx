@@ -16,15 +16,6 @@ const features = [
   { icon: "🌐", title: "Language Support", desc: "Access Zahoor in multiple languages with full RTL support for Arabic & Urdu.", color: "from-cyan-50 to-cyan-100", border: "border-cyan-200", accent: "text-cyan-600" },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: "easeOut", delay: i * 0.06 },
-  }),
-};
-
 export default function FeaturesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
@@ -32,42 +23,24 @@ export default function FeaturesSection() {
   return (
     <section id="features" ref={ref} className="py-24 bg-gradient-to-b from-white to-[#f0fdf6]">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold tracking-wide uppercase mb-4">
-            Everything You Need
-          </span>
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold tracking-wide uppercase mb-4">Everything You Need</span>
           <h2 className="text-4xl md:text-5xl font-black text-emerald-900 mb-4">
             Powerful Features,{" "}
-            <span className="bg-gradient-to-r from-emerald-500 to-amber-500 bg-clip-text text-transparent">
-              One Platform
-            </span>
+            <span className="bg-gradient-to-r from-emerald-500 to-amber-500 bg-clip-text text-transparent">One Platform</span>
           </h2>
-          <p className="text-emerald-700/70 text-lg max-w-2xl mx-auto">
-            From spiritual tools to community services — Zahoor is your complete Islamic companion.
-          </p>
+          <p className="text-emerald-700/70 text-lg max-w-2xl mx-auto">From spiritual tools to community services — Zahoor is your complete Islamic companion.</p>
         </motion.div>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {features.map((feat, i) => (
-            <motion.div
-              key={feat.title}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "show" : "hidden"}
+            <motion.div key={feat.title}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.06, duration: 0.55, ease: "easeOut" }}
               whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(16,185,129,0.15)" }}
-              className={`bg-gradient-to-br ${feat.color} border ${feat.border} rounded-2xl p-6 cursor-default transition-all duration-300 group`}
-            >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {feat.icon}
-              </div>
+              className={`bg-gradient-to-br ${feat.color} border ${feat.border} rounded-2xl p-6 cursor-default transition-all duration-300 group`}>
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{feat.icon}</div>
               <h3 className={`text-base font-bold mb-2 ${feat.accent}`}>{feat.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{feat.desc}</p>
             </motion.div>
