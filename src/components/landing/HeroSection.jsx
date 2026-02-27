@@ -64,12 +64,12 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1 variants={item} className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-6">
-            <span className="text-emerald-900">Connecting the</span><br />
-            <span className="bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 bg-clip-text text-transparent">Global Shia</span><br />
-            <span className="text-emerald-900">Community</span>
+            <span className="text-white drop-shadow-lg">Connecting the</span><br />
+            <span className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent drop-shadow-lg">Global Shia</span><br />
+            <span className="text-white drop-shadow-lg">Community</span>
           </motion.h1>
 
-          <motion.p variants={item} className="text-lg md:text-xl text-emerald-700/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <motion.p variants={item} className="text-lg md:text-xl text-emerald-100/90 max-w-2xl mx-auto mb-10 leading-relaxed">
             Zahoor brings together millions of believers — from daily Duas and Majalis to Ejara services, Islamic Calendar, and Istikhara. One platform, one Ummah.
           </motion.p>
 
