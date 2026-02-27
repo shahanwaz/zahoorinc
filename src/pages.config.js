@@ -47,148 +47,148 @@
  *
  * The mainPage value must match a key in the PAGES object exactly.
  */
-import Home from './pages/Home';
-import Events from './pages/Events';
-import Questions from './pages/Questions';
-import Nearby from './pages/Nearby';
-import Profile from './pages/Profile';
-import Splash from './pages/Splash';
-import Intro from './pages/Intro';
-import MyStatus from './pages/MyStatus';
-import Notifications from './pages/Notifications';
-import PrayerTimesPage from './pages/PrayerTimesPage';
-import Duas from './pages/Duas';
-import QiblaCompass from './pages/QiblaCompass';
-import AwaitersCorner from './pages/AwaitersCorner';
-import StoryDetail from './pages/StoryDetail';
-import AnjumanExplorer from './pages/AnjumanExplorer';
-import AnjumanDetails from './pages/AnjumanDetails';
-import CreateAnjuman from './pages/CreateAnjuman';
-import MediaLibrary from './pages/MediaLibrary';
-import FindMaulana from './pages/FindMaulana';
-import ContestsRewards from './pages/ContestsRewards';
-import Onboarding from './pages/Onboarding';
-import AzaanSettings from './pages/AzaanSettings';
-import LanguageSettings from './pages/LanguageSettings';
-import HelpAndReportContent from './pages/HelpAndReportContent';
-import DonationSupport from './pages/DonationSupport';
-import Notes from './pages/Notes';
-import WishesCelebrations from './pages/WishesCelebrations';
-import GoPremium from './pages/GoPremium';
-import Checkout from './pages/Checkout';
-import IslamicCalendar from './pages/IslamicCalendar';
-import CreateTextStatus from './pages/CreateTextStatus';
-import CreateMediaStatus from './pages/CreateMediaStatus';
-import SurahDetail from './pages/SurahDetail';
-import LiveStreaming from './pages/LiveStreaming';
-import WatchStream from './pages/WatchStream';
-import QuestionDetail from './pages/QuestionDetail';
-import CategorySelection from './pages/CategorySelection';
-import ProfileCompletion from './pages/ProfileCompletion';
-import WelcomeSuccess from './pages/WelcomeSuccess';
-import EjaraServices from './pages/EjaraServices';
-import Payment from './pages/Payment';
-import Wallet from './pages/Wallet';
 import AboutUs from './pages/AboutUs';
-import TermsAndConditions from './pages/TermsAndConditions';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Istikhara from './pages/Istikhara';
-import CreateEvent from './pages/CreateEvent';
 import AddNearbyListing from './pages/AddNearbyListing';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminUsers from './pages/AdminUsers';
-import AdminEjara from './pages/AdminEjara';
-import AdminIstikhara from './pages/AdminIstikhara';
-import AdminWallet from './pages/AdminWallet';
-import AdminQA from './pages/AdminQA';
-import AdminStreaming from './pages/AdminStreaming';
-import AdminTuition from './pages/AdminTuition';
-import AdminReports from './pages/AdminReports';
-import AdminFeedback from './pages/AdminFeedback';
-import AdminSupport from './pages/AdminSupport';
 import AdminContent from './pages/AdminContent';
-import AdminSettings from './pages/AdminSettings';
-import AdminRoles from './pages/AdminRoles';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminEjara from './pages/AdminEjara';
+import AdminFeedback from './pages/AdminFeedback';
+import AdminIstikhara from './pages/AdminIstikhara';
 import AdminLogin from './pages/AdminLogin';
-import MaulanaProfile from './pages/MaulanaProfile';
+import AdminQA from './pages/AdminQA';
+import AdminReports from './pages/AdminReports';
+import AdminRoles from './pages/AdminRoles';
+import AdminSettings from './pages/AdminSettings';
+import AdminStreaming from './pages/AdminStreaming';
+import AdminSupport from './pages/AdminSupport';
+import AdminTuition from './pages/AdminTuition';
+import AdminUsers from './pages/AdminUsers';
+import AdminWallet from './pages/AdminWallet';
+import AnjumanDetails from './pages/AnjumanDetails';
+import AnjumanExplorer from './pages/AnjumanExplorer';
+import AwaitersCorner from './pages/AwaitersCorner';
+import AzaanSettings from './pages/AzaanSettings';
+import CategorySelection from './pages/CategorySelection';
+import Checkout from './pages/Checkout';
+import ContestsRewards from './pages/ContestsRewards';
+import CreateAnjuman from './pages/CreateAnjuman';
+import CreateEvent from './pages/CreateEvent';
+import CreateMediaStatus from './pages/CreateMediaStatus';
+import CreateTextStatus from './pages/CreateTextStatus';
+import DonationSupport from './pages/DonationSupport';
+import Duas from './pages/Duas';
+import EjaraServices from './pages/EjaraServices';
+import Events from './pages/Events';
+import FindMaulana from './pages/FindMaulana';
 import GoLive from './pages/GoLive';
-import MajalisLectures from './pages/MajalisLectures';
-import SavedItems from './pages/SavedItems';
-import MediaSubcategory from './pages/MediaSubcategory';
+import GoPremium from './pages/GoPremium';
+import HelpAndReportContent from './pages/HelpAndReportContent';
+import Home from './pages/Home';
+import Intro from './pages/Intro';
+import IslamicCalendar from './pages/IslamicCalendar';
+import Istikhara from './pages/Istikhara';
 import LandingPage from './pages/LandingPage';
+import LanguageSettings from './pages/LanguageSettings';
+import LiveStreaming from './pages/LiveStreaming';
+import MajalisLectures from './pages/MajalisLectures';
+import MaulanaProfile from './pages/MaulanaProfile';
+import MediaLibrary from './pages/MediaLibrary';
+import MediaSubcategory from './pages/MediaSubcategory';
+import MyStatus from './pages/MyStatus';
+import Nearby from './pages/Nearby';
+import Notes from './pages/Notes';
+import Notifications from './pages/Notifications';
+import Onboarding from './pages/Onboarding';
+import Payment from './pages/Payment';
+import PrayerTimesPage from './pages/PrayerTimesPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Profile from './pages/Profile';
+import ProfileCompletion from './pages/ProfileCompletion';
+import QiblaCompass from './pages/QiblaCompass';
+import QuestionDetail from './pages/QuestionDetail';
+import Questions from './pages/Questions';
+import SavedItems from './pages/SavedItems';
+import Splash from './pages/Splash';
+import StoryDetail from './pages/StoryDetail';
+import SurahDetail from './pages/SurahDetail';
+import TermsAndConditions from './pages/TermsAndConditions';
+import Wallet from './pages/Wallet';
+import WatchStream from './pages/WatchStream';
+import WelcomeSuccess from './pages/WelcomeSuccess';
+import WishesCelebrations from './pages/WishesCelebrations';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Home": Home,
-    "Events": Events,
-    "Questions": Questions,
-    "Nearby": Nearby,
-    "Profile": Profile,
-    "Splash": Splash,
-    "Intro": Intro,
-    "MyStatus": MyStatus,
-    "Notifications": Notifications,
-    "PrayerTimesPage": PrayerTimesPage,
-    "Duas": Duas,
-    "QiblaCompass": QiblaCompass,
-    "AwaitersCorner": AwaitersCorner,
-    "StoryDetail": StoryDetail,
-    "AnjumanExplorer": AnjumanExplorer,
-    "AnjumanDetails": AnjumanDetails,
-    "CreateAnjuman": CreateAnjuman,
-    "MediaLibrary": MediaLibrary,
-    "FindMaulana": FindMaulana,
-    "ContestsRewards": ContestsRewards,
-    "Onboarding": Onboarding,
-    "AzaanSettings": AzaanSettings,
-    "LanguageSettings": LanguageSettings,
-    "HelpAndReportContent": HelpAndReportContent,
-    "DonationSupport": DonationSupport,
-    "Notes": Notes,
-    "WishesCelebrations": WishesCelebrations,
-    "GoPremium": GoPremium,
-    "Checkout": Checkout,
-    "IslamicCalendar": IslamicCalendar,
-    "CreateTextStatus": CreateTextStatus,
-    "CreateMediaStatus": CreateMediaStatus,
-    "SurahDetail": SurahDetail,
-    "LiveStreaming": LiveStreaming,
-    "WatchStream": WatchStream,
-    "QuestionDetail": QuestionDetail,
-    "CategorySelection": CategorySelection,
-    "ProfileCompletion": ProfileCompletion,
-    "WelcomeSuccess": WelcomeSuccess,
-    "EjaraServices": EjaraServices,
-    "Payment": Payment,
-    "Wallet": Wallet,
     "AboutUs": AboutUs,
-    "TermsAndConditions": TermsAndConditions,
-    "PrivacyPolicy": PrivacyPolicy,
-    "Istikhara": Istikhara,
-    "CreateEvent": CreateEvent,
     "AddNearbyListing": AddNearbyListing,
-    "AdminDashboard": AdminDashboard,
-    "AdminUsers": AdminUsers,
-    "AdminEjara": AdminEjara,
-    "AdminIstikhara": AdminIstikhara,
-    "AdminWallet": AdminWallet,
-    "AdminQA": AdminQA,
-    "AdminStreaming": AdminStreaming,
-    "AdminTuition": AdminTuition,
-    "AdminReports": AdminReports,
-    "AdminFeedback": AdminFeedback,
-    "AdminSupport": AdminSupport,
     "AdminContent": AdminContent,
-    "AdminSettings": AdminSettings,
-    "AdminRoles": AdminRoles,
+    "AdminDashboard": AdminDashboard,
+    "AdminEjara": AdminEjara,
+    "AdminFeedback": AdminFeedback,
+    "AdminIstikhara": AdminIstikhara,
     "AdminLogin": AdminLogin,
-    "MaulanaProfile": MaulanaProfile,
+    "AdminQA": AdminQA,
+    "AdminReports": AdminReports,
+    "AdminRoles": AdminRoles,
+    "AdminSettings": AdminSettings,
+    "AdminStreaming": AdminStreaming,
+    "AdminSupport": AdminSupport,
+    "AdminTuition": AdminTuition,
+    "AdminUsers": AdminUsers,
+    "AdminWallet": AdminWallet,
+    "AnjumanDetails": AnjumanDetails,
+    "AnjumanExplorer": AnjumanExplorer,
+    "AwaitersCorner": AwaitersCorner,
+    "AzaanSettings": AzaanSettings,
+    "CategorySelection": CategorySelection,
+    "Checkout": Checkout,
+    "ContestsRewards": ContestsRewards,
+    "CreateAnjuman": CreateAnjuman,
+    "CreateEvent": CreateEvent,
+    "CreateMediaStatus": CreateMediaStatus,
+    "CreateTextStatus": CreateTextStatus,
+    "DonationSupport": DonationSupport,
+    "Duas": Duas,
+    "EjaraServices": EjaraServices,
+    "Events": Events,
+    "FindMaulana": FindMaulana,
     "GoLive": GoLive,
-    "MajalisLectures": MajalisLectures,
-    "SavedItems": SavedItems,
-    "MediaSubcategory": MediaSubcategory,
+    "GoPremium": GoPremium,
+    "HelpAndReportContent": HelpAndReportContent,
+    "Home": Home,
+    "Intro": Intro,
+    "IslamicCalendar": IslamicCalendar,
+    "Istikhara": Istikhara,
     "LandingPage": LandingPage,
+    "LanguageSettings": LanguageSettings,
+    "LiveStreaming": LiveStreaming,
+    "MajalisLectures": MajalisLectures,
+    "MaulanaProfile": MaulanaProfile,
+    "MediaLibrary": MediaLibrary,
+    "MediaSubcategory": MediaSubcategory,
+    "MyStatus": MyStatus,
+    "Nearby": Nearby,
+    "Notes": Notes,
+    "Notifications": Notifications,
+    "Onboarding": Onboarding,
+    "Payment": Payment,
+    "PrayerTimesPage": PrayerTimesPage,
+    "PrivacyPolicy": PrivacyPolicy,
+    "Profile": Profile,
+    "ProfileCompletion": ProfileCompletion,
+    "QiblaCompass": QiblaCompass,
+    "QuestionDetail": QuestionDetail,
+    "Questions": Questions,
+    "SavedItems": SavedItems,
+    "Splash": Splash,
+    "StoryDetail": StoryDetail,
+    "SurahDetail": SurahDetail,
+    "TermsAndConditions": TermsAndConditions,
+    "Wallet": Wallet,
+    "WatchStream": WatchStream,
+    "WelcomeSuccess": WelcomeSuccess,
+    "WishesCelebrations": WishesCelebrations,
 }
 
 export const pagesConfig = {
