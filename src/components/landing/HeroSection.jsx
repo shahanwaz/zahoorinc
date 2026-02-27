@@ -58,8 +58,8 @@ export default function HeroSection() {
       <motion.div style={{ opacity }} className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div variants={item} className="mb-8 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm border border-emerald-200 shadow-lg">
-              <span className="text-emerald-700 text-sm" style={{ fontFamily: "serif" }}>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 shadow-lg">
+              <span className="text-amber-200 text-sm drop-shadow" style={{ fontFamily: "serif" }}>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
             </div>
           </motion.div>
 
