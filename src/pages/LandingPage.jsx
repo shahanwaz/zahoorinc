@@ -11,7 +11,20 @@ import LandingFooter from "@/components/landing/LandingFooter";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#FAFDF9]" style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div className="min-h-screen overflow-x-hidden bg-[#FAFDF9] landing-page-root" style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      <style>{`
+        .landing-page-root h1,
+        .landing-page-root h2,
+        .landing-page-root h3,
+        .landing-page-root h4,
+        .landing-page-root h5,
+        .landing-page-root h6 {
+          color: inherit;
+        }
+        .landing-page-root {
+          color: #1a1a1a;
+        }
+      `}</style>
       <LandingNav />
       <HeroSection />
       <StatsSection />
