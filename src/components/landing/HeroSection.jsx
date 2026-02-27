@@ -88,7 +88,7 @@ export default function HeroSection() {
             </motion.button>
           </motion.div>
 
-          <motion.div variants={item} className="flex flex-wrap justify-center gap-6 text-sm text-emerald-600 font-medium">
+          <motion.div variants={item} className="flex flex-wrap justify-center gap-6 text-sm text-emerald-100/80 font-medium">
             {["🌍 Global Community", "🔒 Secure & Private", "📱 Mobile & Web", "🆓 Free to Join"].map((b) => (
               <span key={b}>{b}</span>
             ))}
