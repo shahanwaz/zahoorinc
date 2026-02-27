@@ -32,19 +32,19 @@ export default function HeroSection() {
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#f0fdf6] via-[#FAFDF9] to-[#f5f5f0]">
       <motion.div style={{ y: bgY }} className="absolute inset-0">
-        <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hero-pat" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-              <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="#059669" strokeWidth="0.5"/>
-              <path d="M40 10 L70 40 L40 70 L10 40 Z" fill="none" stroke="#059669" strokeWidth="0.5"/>
-              <circle cx="40" cy="40" r="8" fill="none" stroke="#059669" strokeWidth="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hero-pat)"/>
-        </svg>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-3xl" />
+        {/* Parallax background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/3/38/%D8%B5%D8%AD%D9%86_%D8%A7%DB%8C%D9%88%D8%A7%D9%86_%D8%B7%D9%84%D8%A7_%D9%88_%D8%B3%D9%82%D8%A7%D8%AE%D8%A7%D9%86%D9%87.jpg')`,
+            willChange: "transform",
+          }}
+        />
+        {/* Emerald-gold color overlay for theme */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/75 via-emerald-800/60 to-amber-900/50" />
+        {/* Soft light bleed from center */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFDF9] via-transparent to-transparent" style={{ opacity: 0.55 }} />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-400/10 rounded-full blur-3xl" />
       </motion.div>
 
       <FloatingShape x={8} y={15} size="80px" delay={0} duration={6} />
