@@ -33,15 +33,15 @@ export default function LandingNav() {
             alt="Zahoor" className="w-10 h-10 rounded-xl shadow-md"
           />
           <div>
-            <span className="text-xl font-bold text-emerald-800 block leading-none">Zahoor</span>
-            <span className="text-[10px] text-emerald-500 font-medium tracking-widest uppercase">Hearts Await Zahoor</span>
+            <span className={`text-xl font-bold block leading-none transition-colors duration-300 ${scrolled ? "text-emerald-800" : "text-white drop-shadow-md"}`}>Zahoor</span>
+            <span className={`text-[10px] font-medium tracking-widest uppercase transition-colors duration-300 ${scrolled ? "text-emerald-500" : "text-amber-300"}`}>Hearts Await Zahoor</span>
           </div>
         </div>
 
         <nav className="hidden md:flex items-center gap-8">
           {["features", "spiritual", "how-it-works", "about"].map((id) => (
             <button key={id} onClick={() => scrollTo(id)}
-              className="text-sm font-medium text-emerald-700 hover:text-emerald-500 transition-colors capitalize">
+              className={`text-sm font-medium transition-colors duration-300 capitalize ${scrolled ? "text-emerald-700 hover:text-emerald-500" : "text-white/90 hover:text-amber-300 drop-shadow"}`}>
               {id.replace("-", " ")}
             </button>
           ))}
@@ -50,7 +50,7 @@ export default function LandingNav() {
         <div className="flex items-center gap-3">
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
             onClick={() => base44.auth.redirectToLogin()}
-            className="hidden sm:block px-5 py-2 rounded-xl text-sm font-semibold text-emerald-700 border-2 border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-200">
+            className={`hidden sm:block px-5 py-2 rounded-xl text-sm font-semibold border-2 transition-all duration-300 ${scrolled ? "text-emerald-700 border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50" : "text-white border-white/60 hover:border-white hover:bg-white/15"}`}>
             Sign In
           </motion.button>
           <motion.button
@@ -60,7 +60,7 @@ export default function LandingNav() {
             className="px-5 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-200">
             Get Started
           </motion.button>
-          <button className="md:hidden ml-2 text-emerald-700 flex flex-col gap-1.5 p-1" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className={`md:hidden ml-2 flex flex-col gap-1.5 p-1 transition-colors duration-300 ${scrolled ? "text-emerald-700" : "text-white"}`} onClick={() => setMenuOpen(!menuOpen)}>
             <span className={`block w-5 h-0.5 bg-current transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
             <span className={`block w-5 h-0.5 bg-current transition-all ${menuOpen ? "opacity-0" : ""}`} />
             <span className={`block w-5 h-0.5 bg-current transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
