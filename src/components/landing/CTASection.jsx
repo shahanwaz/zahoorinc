@@ -35,7 +35,7 @@ export default function CTASection() {
             </motion.button>
             <motion.button whileHover={{ scale: 1.07, boxShadow: "0 0 30px rgba(245,158,11,0.4)" }} whileTap={{ scale: 0.97 }}
               onClick={() => base44.auth.redirectToLogin()}
-              className="px-10 py-5 rounded-2xl text-xl font-black text-amber-700 bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-300 shadow-xl shadow-amber-100">
+              className="px-10 py-5 rounded-2xl text-xl font-black text-emerald-700 bg-white border-2 border-emerald-200 shadow-xl hover:bg-emerald-50 transition-colors">
               ✨ Sign In
             </motion.button>
           </div>
