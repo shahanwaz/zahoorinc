@@ -46,12 +46,30 @@ export default function Layout({ children, currentPageName }) {
   const hideBottomNavPages = ["Splash", "Intro", "Onboarding", "QuestionDetail", "GoLive"];
   const shouldHideBottomNav = hideBottomNavPages.includes(currentPageName);
 
+  // Public pages accessible without login (desktop web)
+  const PUBLIC_PAGES = [
+    "LandingPage", "AboutUs", "TermsAndConditions", "PrivacyPolicy",
+    "HelpAndReportContent", "DonationSupport",
+    "MediaLibrary", "Events", "EjaraServices", "Istikhara", "FindMaulana"
+  ];
+  const isPublicPage = PUBLIC_PAGES.includes(currentPageName);
+
   // Full-screen pages (no layout)
   if (currentPageName === "Splash" || currentPageName === "Intro" || currentPageName === "Onboarding" || currentPageName === "LandingPage") {
     return children;
   }
 
-  // Redirect non-authenticated desktop users to Landing Page
+  // Public pages wrap with PublicPageLayout (header+footer, no auth needed)
+  if (isDesktop && !currentUser && isPublicPage) {
+    const PublicPageLayout = React.lazy(() => import('./components/landing/PublicPageLayout'));
+    return (
+      <React.Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center"><div className="text-emerald-600 text-lg">Loading...</div></div>}>
+        <PublicPageLayout showLoginBanner={true}>{children}</PublicPageLayout>
+      </React.Suspense>
+    );
+  }
+
+  // Redirect non-authenticated desktop users to Landing Page for protected pages
   if (isDesktop && !currentUser) {
     const LandingPage = React.lazy(() => import('./pages/LandingPage'));
     return (
