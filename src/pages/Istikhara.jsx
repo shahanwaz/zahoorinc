@@ -132,7 +132,7 @@ export default function Istikhara() {
     }
   };
 
-  if (loading || !currentUser) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-cream-50 flex items-center justify-center">
         <div className="text-center">
@@ -143,7 +143,7 @@ export default function Istikhara() {
     );
   }
 
-  const isScholar = ['maulana', 'zakir', 'zakera'].includes(currentUser.user_type);
+  const isScholar = currentUser && ['maulana', 'zakir', 'zakera'].includes(currentUser.user_type);
 
   const userTabs = [
     { id: 'my_requests', label: 'My Requests' }
