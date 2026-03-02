@@ -206,12 +206,21 @@ export default function Istikhara() {
           <p className="text-emerald-700 leading-relaxed mb-6 max-w-2xl mx-auto">
             Submit your concern, and a qualified scholar will perform Istikhara on your behalf and provide private spiritual guidance. This is a trusted paid service to help you make important life decisions.
           </p>
-          <Button 
-            onClick={() => setShowRequestModal(true)} 
-            className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-6 text-lg font-bold shadow-xl rounded-2xl"
-          >
-            <Plus className="w-6 h-6 mr-2" /> Request Istikhara
-          </Button>
+          {currentUser ? (
+            <Button 
+              onClick={() => setShowRequestModal(true)} 
+              className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-6 text-lg font-bold shadow-xl rounded-2xl"
+            >
+              <Plus className="w-6 h-6 mr-2" /> Request Istikhara
+            </Button>
+          ) : (
+            <Button 
+              onClick={() => base44.auth.redirectToLogin()}
+              className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-6 text-lg font-bold shadow-xl rounded-2xl"
+            >
+              <LogIn className="w-6 h-6 mr-2" /> Sign In to Request Istikhara
+            </Button>
+          )}
           <p className="text-sm text-emerald-600 mt-3">Fixed Rate: ₹50 per Istikhara</p>
         </div>
       </div>
