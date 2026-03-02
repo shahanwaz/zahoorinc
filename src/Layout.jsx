@@ -7,9 +7,17 @@ import DesktopHeader from "./components/layout/DesktopHeader";
 import DesktopSidebar from "./components/layout/DesktopSidebar";
 import { User as UserEntity } from "@/entities/User";
 
+// Pages that NEVER need auth — render immediately with public layout
+const PUBLIC_PAGES = [
+  "LandingPage", "AboutUs", "TermsAndConditions", "PrivacyPolicy",
+  "HelpAndReportContent", "DonationSupport",
+  "MediaLibrary", "Events", "EjaraServices", "Istikhara", "FindMaulana"
+];
+
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const [currentUser, setCurrentUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'system');
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 
