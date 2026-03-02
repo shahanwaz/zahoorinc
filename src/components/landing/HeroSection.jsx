@@ -83,7 +83,7 @@ export default function HeroSection() {
             <motion.button
               whileHover={{ scale: 1.07, boxShadow: "0 0 24px rgba(245,158,11,0.35)" }} whileTap={{ scale: 0.97 }}
               onClick={() => base44.auth.redirectToLogin()}
-              className="px-8 py-4 rounded-2xl text-lg font-bold text-amber-700 bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-300 shadow-lg min-w-[200px]">
+              className="px-8 py-4 rounded-2xl text-lg font-bold text-amber-100 bg-white/15 backdrop-blur-sm border-2 border-white/40 shadow-lg min-w-[200px]">
               ✨ Sign In
             </motion.button>
           </motion.div>
