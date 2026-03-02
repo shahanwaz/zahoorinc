@@ -24,18 +24,18 @@ export default function Istikhara() {
 
   const loadData = async () => {
     try {
-      const user = await User.me();
-      setCurrentUser(user);
+      // Try to get user (optional, non-blocking)
+      User.me().then(setCurrentUser).catch(() => {});
       
-      const allRequests = await IstikharaEntity.list('-created_date');
+      const [allRequests, allResponses] = await Promise.all([
+        IstikharaEntity.list('-created_date').catch(() => []),
+        IstikharaResponseEntity.list('-created_date').catch(() => [])
+      ]);
       setRequests(allRequests);
-      
-      const allResponses = await IstikharaResponseEntity.list('-created_date');
       setResponses(allResponses);
-      
-      setLoading(false);
     } catch (error) {
       console.error('Error loading data:', error);
+    } finally {
       setLoading(false);
     }
   };
