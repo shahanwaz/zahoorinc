@@ -157,6 +157,7 @@ export default function Istikhara() {
   const tabs = isScholar ? scholarTabs : userTabs;
 
   const getFilteredRequests = () => {
+    if (!currentUser) return [];
     switch (activeTab) {
       case 'my_requests':
         return requests.filter(r => r.user_id === currentUser.id && r.status !== 'completed');
@@ -168,6 +169,7 @@ export default function Istikhara() {
   };
 
   const getPastRequests = () => {
+    if (!currentUser) return [];
     return requests.filter(r => r.user_id === currentUser.id && r.status === 'completed');
   };
 
