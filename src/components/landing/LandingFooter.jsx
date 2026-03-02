@@ -34,9 +34,15 @@ export default function LandingFooter() {
           <div>
             <h4 className="text-amber-300 font-bold text-sm uppercase tracking-wider mb-5">Platform</h4>
             <ul className="space-y-3">
-              {["Media Library","Events","Ejara Services","Istikhara","Find Maulana"].map((label) => (
-                <li key={label}>
-                  <button onClick={() => base44.auth.redirectToLogin()} className="text-emerald-300/80 hover:text-white text-sm transition-colors">{label}</button>
+              {[
+                { label: "Media Library", page: "MediaLibrary" },
+                { label: "Events", page: "Events" },
+                { label: "Ejara Services", page: "EjaraServices" },
+                { label: "Istikhara", page: "Istikhara" },
+                { label: "Find Maulana", page: "FindMaulana" },
+              ].map(({ label, page }) => (
+                <li key={page}>
+                  <Link to={createPageUrl(page)} className="text-emerald-300/80 hover:text-white text-sm transition-colors">{label}</Link>
                 </li>
               ))}
             </ul>
@@ -45,9 +51,15 @@ export default function LandingFooter() {
           <div>
             <h4 className="text-amber-300 font-bold text-sm uppercase tracking-wider mb-5">Legal & Help</h4>
             <ul className="space-y-3">
-              {["About Us","Terms & Conditions","Privacy Policy","Help & Report","Donate & Support"].map((label) => (
-                <li key={label}>
-                  <button onClick={() => base44.auth.redirectToLogin()} className="text-emerald-300/80 hover:text-white text-sm transition-colors">{label}</button>
+              {[
+                { label: "About Us", page: "AboutUs" },
+                { label: "Terms & Conditions", page: "TermsAndConditions" },
+                { label: "Privacy Policy", page: "PrivacyPolicy" },
+                { label: "Help & Report", page: "HelpAndReportContent" },
+                { label: "Donate & Support", page: "DonationSupport" },
+              ].map(({ label, page }) => (
+                <li key={page}>
+                  <Link to={createPageUrl(page)} className="text-emerald-300/80 hover:text-white text-sm transition-colors">{label}</Link>
                 </li>
               ))}
             </ul>
