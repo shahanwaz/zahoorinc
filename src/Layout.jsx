@@ -61,12 +61,6 @@ export default function Layout({ children, currentPageName }) {
   const hideBottomNavPages = ["Splash", "Intro", "Onboarding", "QuestionDetail", "GoLive"];
   const shouldHideBottomNav = hideBottomNavPages.includes(currentPageName);
 
-  // Public pages accessible without login (desktop web)
-  const PUBLIC_PAGES = [
-    "LandingPage", "AboutUs", "TermsAndConditions", "PrivacyPolicy",
-    "HelpAndReportContent", "DonationSupport",
-    "MediaLibrary", "Events", "EjaraServices", "Istikhara", "FindMaulana"
-  ];
   const isPublicPage = PUBLIC_PAGES.includes(currentPageName);
 
   // Full-screen pages (no layout)
@@ -74,13 +68,22 @@ export default function Layout({ children, currentPageName }) {
     return children;
   }
 
-  // Public pages wrap with PublicPageLayout (header+footer, no auth needed)
-  if (isDesktop && !currentUser && isPublicPage) {
+  // Public pages: always render with PublicPageLayout, NO auth wait, NO redirect
+  if (isPublicPage) {
     const PublicPageLayout = React.lazy(() => import('./components/landing/PublicPageLayout'));
     return (
       <React.Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center"><div className="text-emerald-600 text-lg">Loading...</div></div>}>
-        <PublicPageLayout showLoginBanner={true}>{children}</PublicPageLayout>
+        <PublicPageLayout showLoginBanner={!currentUser}>{children}</PublicPageLayout>
       </React.Suspense>
+    );
+  }
+
+  // Show loading while checking auth for protected pages (desktop only)
+  if (isDesktop && authLoading) {
+    return (
+      <div className="min-h-screen bg-emerald-50 flex items-center justify-center">
+        <div className="text-emerald-600 text-lg">Loading Zahoor...</div>
+      </div>
     );
   }
 
