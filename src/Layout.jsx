@@ -33,11 +33,18 @@ export default function Layout({ children, currentPageName }) {
 
   useEffect(() => {
     const loadUser = async () => {
+      // Skip auth check entirely for public pages
+      if (PUBLIC_PAGES.includes(currentPageName)) {
+        setAuthLoading(false);
+        return;
+      }
       try {
         const user = await UserEntity.me();
         setCurrentUser(user);
       } catch (error) {
         console.error("Error loading user:", error);
+      } finally {
+        setAuthLoading(false);
       }
     };
     loadUser();
