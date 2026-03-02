@@ -169,9 +169,7 @@ export default function Events() {
 
   const loadData = async () => {
     try {
-      const user = await User.me();
-      setCurrentUser(user);
-      
+      // Load events without requiring auth
       const allEvents = await Event.list('-created_date');
       
       // Filter out expired events
@@ -180,6 +178,9 @@ export default function Events() {
       });
       
       setEvents(activeEvents);
+
+      // Try to get user (optional, non-blocking)
+      User.me().then(setCurrentUser).catch(() => {});
     } catch (error) {
       console.error("Error loading data:", error);
     }
