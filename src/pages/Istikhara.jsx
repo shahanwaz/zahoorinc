@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Plus } from 'lucide-react';
+import { ArrowLeft, Plus, LogIn } from 'lucide-react';
 import { User } from '@/entities/User';
 import { Istikhara as IstikharaEntity } from '@/entities/Istikhara';
 import { IstikharaResponse as IstikharaResponseEntity } from '@/entities/IstikharaResponse';
 import { WalletTransaction } from '@/entities/WalletTransaction';
 import RequestIstikharaModal from '@/components/istikhara/RequestIstikharaModal';
 import IstikharaRequestCard from '@/components/istikhara/IstikharaRequestCard';
+import { base44 } from '@/api/base44Client';
 
 export default function Istikhara() {
   const navigate = useNavigate();
