@@ -103,15 +103,30 @@ export default function Layout({ children, currentPageName }) {
     );
   }
 
-  // Redirect non-authenticated desktop users to Landing Page for protected pages
-  if (isDesktop && !currentUser) {
-    const LandingPage = React.lazy(() => import('./pages/LandingPage'));
+  // Not logged in on protected page: show sign-in prompt, never auto-redirect
+  if (!authLoading && !currentUser) {
     return (
-      <React.Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-emerald-600 text-lg">Loading Zahoor...</div>
-      </div>}>
-        <LandingPage />
-      </React.Suspense>
+      <div className="min-h-screen bg-emerald-50 flex flex-col items-center justify-center gap-6 p-8 text-center">
+        <img
+          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68874558a4cb8143d474b0a5/20b523e25_487ad098c_yabaqiyatullah.png"
+          alt="Zahoor" className="w-16 h-16 rounded-2xl shadow-lg"
+        />
+        <div>
+          <h2 className="text-2xl font-bold text-emerald-800 mb-2">Welcome to Zahoor</h2>
+          <p className="text-emerald-600">Please sign in to continue.</p>
+        </div>
+        <div className="flex gap-3">
+          <button
+            onClick={() => base44.auth.redirectToLogin()}
+            className="px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors">
+            Sign In
+          </button>
+          <a href={createPageUrl("LandingPage")}
+            className="px-6 py-3 rounded-xl border-2 border-emerald-300 text-emerald-700 font-semibold hover:bg-emerald-50 transition-colors">
+            Back to Home
+          </a>
+        </div>
+      </div>
     );
   }
 
