@@ -33,12 +33,9 @@ export default function Layout({ children, currentPageName }) {
 
   useEffect(() => {
     const loadUser = async () => {
-      // LandingPage: render immediately (no auth wait), silently redirect if already logged in
+      // LandingPage: render immediately, no auth check needed
       if (currentPageName === "LandingPage") {
         setAuthLoading(false);
-        base44.auth.isAuthenticated().then(authed => {
-          if (authed) window.location.href = createPageUrl("Home");
-        }).catch(() => {});
         return;
       }
 
