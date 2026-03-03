@@ -41,56 +41,7 @@ function PublicHeader() {
   );
 }
 
-function PublicFooter() {
-  return (
-    <footer className="bg-emerald-900 text-white mt-16">
-      <div className="h-1 bg-gradient-to-r from-emerald-400 via-amber-400 to-emerald-400" />
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div className="md:col-span-2">
-            <Link to={createPageUrl("LandingPage")} className="flex items-center gap-3 mb-4">
-              <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68874558a4cb8143d474b0a5/20b523e25_487ad098c_yabaqiyatullah.png" alt="Zahoor" className="w-10 h-10 rounded-xl" />
-              <div>
-                <span className="text-lg font-black text-white block">Zahoor</span>
-                <span className="text-emerald-300 text-xs tracking-widest uppercase">Hearts Await Zahoor</span>
-              </div>
-            </Link>
-            <p className="text-emerald-300/80 text-sm leading-relaxed max-w-sm">
-              Connecting the global Shia Muslim community through spiritual tools, community services, and educational resources.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-amber-300 font-bold text-sm uppercase tracking-wider mb-4">Platform</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.platform.map(({ label, page }) => (
-                <li key={page}>
-                  <Link to={createPageUrl(page)} className="text-emerald-300/80 hover:text-white text-sm transition-colors">{label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-amber-300 font-bold text-sm uppercase tracking-wider mb-4">Legal & Help</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.legal.map(({ label, page }) => (
-                <li key={page}>
-                  <Link to={createPageUrl(page)} className="text-emerald-300/80 hover:text-white text-sm transition-colors">{label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="border-t border-emerald-700/50 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-emerald-400/70 text-sm">© {new Date().getFullYear()} Zahoor. All rights reserved. Built with ❤️ for the Ummah.</p>
-          <div className="flex items-center gap-2 text-emerald-300/50 text-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Platform is live & growing
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
+
 
 export function LoginRequiredBanner({ action = "access full features" }) {
   return (
