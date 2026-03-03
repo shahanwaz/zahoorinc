@@ -5,7 +5,7 @@ import { Home, Calendar, Users, User, MessageCircle, Bell, Menu } from "lucide-r
 import RightSidebar from "./components/layout/RightSidebar";
 import DesktopHeader from "./components/layout/DesktopHeader";
 import DesktopSidebar from "./components/layout/DesktopSidebar";
-import { User as UserEntity } from "@/entities/User";
+import { base44 } from "@/api/base44Client";
 
 // Pages that NEVER need auth — render immediately with public layout
 const PUBLIC_PAGES = [
