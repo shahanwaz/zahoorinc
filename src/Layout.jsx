@@ -64,7 +64,12 @@ export default function Layout({ children, currentPageName }) {
   const isPublicPage = PUBLIC_PAGES.includes(currentPageName);
 
   // Full-screen pages (no layout)
-  if (currentPageName === "Splash" || currentPageName === "Intro" || currentPageName === "Onboarding" || currentPageName === "LandingPage") {
+  if (currentPageName === "Splash" || currentPageName === "Intro" || currentPageName === "Onboarding") {
+    return children;
+  }
+
+  // Landing page: always render without any wrapper (it has its own full layout)
+  if (currentPageName === "LandingPage") {
     return children;
   }
 
