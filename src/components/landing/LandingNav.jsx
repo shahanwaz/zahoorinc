@@ -51,14 +51,14 @@ export default function LandingNav() {
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
             onClick={() => base44.auth.redirectToLogin()}
             className={`hidden sm:block px-5 py-2 rounded-xl text-sm font-semibold border-2 transition-all duration-300 ${scrolled ? "text-emerald-700 border-emerald-300 hover:border-emerald-500 hover:bg-emerald-50" : "text-white border-white/60 hover:border-white hover:bg-white/15"}`}>
-            Sign In
+            Login
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(16,185,129,0.4)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => base44.auth.redirectToLogin()}
             className="px-5 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-200">
-            Get Started
+            Create Account
           </motion.button>
           <button className={`md:hidden ml-2 flex flex-col gap-1.5 p-1 transition-colors duration-300 ${scrolled ? "text-emerald-700" : "text-white"}`} onClick={() => setMenuOpen(!menuOpen)}>
             <span className={`block w-5 h-0.5 bg-current transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
