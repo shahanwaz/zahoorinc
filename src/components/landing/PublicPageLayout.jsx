@@ -75,7 +75,7 @@ export default function PublicPageLayout({ children, showLoginBanner = false, lo
           {showLoginBanner && <LoginRequiredBanner action={loginBannerAction} />}
           {children}
         </main>
-        <PublicFooter />
+        <LandingFooter />
       </div>
     </div>
   );
