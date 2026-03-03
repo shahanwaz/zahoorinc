@@ -33,7 +33,20 @@ export default function Layout({ children, currentPageName }) {
 
   useEffect(() => {
     const loadUser = async () => {
-      // Skip auth check entirely for public pages
+      // For LandingPage: check if user is logged in to redirect them to Home
+      if (currentPageName === "LandingPage") {
+        try {
+          const user = await UserEntity.me();
+          if (user) {
+            window.location.href = createPageUrl("Home");
+            return;
+          }
+        } catch (_) {}
+        setAuthLoading(false);
+        return;
+      }
+
+      // Skip auth check entirely for other public pages
       if (PUBLIC_PAGES.includes(currentPageName)) {
         setAuthLoading(false);
         return;
