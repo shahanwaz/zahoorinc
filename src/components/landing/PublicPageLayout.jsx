@@ -3,23 +3,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
-
-const footerLinks = {
-  platform: [
-    { label: "Media Library", page: "MediaLibrary" },
-    { label: "Events", page: "Events" },
-    { label: "Ejara Services", page: "EjaraServices" },
-    { label: "Istikhara", page: "Istikhara" },
-    { label: "Find Maulana", page: "FindMaulana" },
-  ],
-  legal: [
-    { label: "About Us", page: "AboutUs" },
-    { label: "Terms & Conditions", page: "TermsAndConditions" },
-    { label: "Privacy Policy", page: "PrivacyPolicy" },
-    { label: "Help & Report", page: "HelpAndReportContent" },
-    { label: "Donate & Support", page: "DonationSupport" },
-  ],
-};
+import LandingFooter from "./LandingFooter";
 
 function PublicHeader() {
   return (
