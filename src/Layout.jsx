@@ -33,30 +33,30 @@ export default function Layout({ children, currentPageName }) {
 
   useEffect(() => {
     const loadUser = async () => {
-      // LandingPage: render immediately, silently check auth in background to redirect if already logged in
+      // LandingPage: render immediately (no auth wait), silently redirect if already logged in
       if (currentPageName === "LandingPage") {
         setAuthLoading(false);
-        base44.auth.me().then(user => {
-          if (user) window.location.href = createPageUrl("Home");
+        base44.auth.isAuthenticated().then(authed => {
+          if (authed) window.location.href = createPageUrl("Home");
         }).catch(() => {});
         return;
       }
 
-      // Public pages: skip auth entirely, render immediately
+      // Public pages: render immediately, no auth needed
       if (PUBLIC_PAGES.includes(currentPageName)) {
         setAuthLoading(false);
         return;
       }
 
-      // Protected pages: load user (do NOT redirect — let Base44 handle login redirect naturally)
-      try {
-        const user = await base44.auth.me();
-        setCurrentUser(user);
-      } catch (error) {
-        // Not logged in — do nothing, do NOT force redirect
-      } finally {
-        setAuthLoading(false);
+      // Protected pages: try to load user silently, never force redirect
+      const authed = await base44.auth.isAuthenticated().catch(() => false);
+      if (authed) {
+        try {
+          const user = await base44.auth.me();
+          setCurrentUser(user);
+        } catch (_) {}
       }
+      setAuthLoading(false);
     };
     loadUser();
 
