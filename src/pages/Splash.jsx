@@ -8,24 +8,35 @@ import { Loader } from 'lucide-react';
 export default function Splash() {
   const navigate = useNavigate();
 
+  const isWeb = window.innerWidth >= 1024;
+
   useEffect(() => {
     const checkUserStatus = async () => {
+      // Web: always go to LandingPage for unauthenticated, Home for authenticated
+      if (isWeb) {
+        try {
+          const user = await User.me();
+          navigate(createPageUrl('Home'));
+        } catch (error) {
+          navigate(createPageUrl('LandingPage'));
+        }
+        return;
+      }
+
+      // Mobile: original flow
       try {
         const user = await User.me();
         if (user && user.onboardingCompleted) {
           navigate(createPageUrl('Home'));
         } else {
-          // New user or incomplete onboarding
           navigate(createPageUrl('CategorySelection'));
         }
       } catch (error) {
-        // User is not logged in
         navigate(createPageUrl('Intro'));
       }
     };
 
-    const timer = setTimeout(checkUserStatus, 1500); // Give a bit of time for splash
-
+    const timer = setTimeout(checkUserStatus, 1500);
     return () => clearTimeout(timer);
   }, [navigate]);
 
