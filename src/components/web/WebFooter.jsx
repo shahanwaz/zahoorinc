@@ -4,13 +4,13 @@ import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
 
 const footerLinks = {
   platform: [
-    { label: "Donate", href: "https://zahoorinc.com/app" },
+    { label: "Donate", href: "/donate" },
   ],
   legal: [
-    { label: "About Us", href: "/AboutUs" },
-    { label: "Terms & Conditions", href: "/TermsAndConditions" },
-    { label: "Privacy Policy", href: "/PrivacyPolicy" },
-    { label: "Help & Support", href: "/HelpAndReportContent" },
+    { label: "About Us", href: "/about" },
+    { label: "Terms & Conditions", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Help & Support", href: "/help" },
   ]
 };
 
