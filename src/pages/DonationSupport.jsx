@@ -9,7 +9,6 @@ import DonationGrid from "@/components/donations/DonationGrid";
 import Leaderboard from "@/components/donations/Leaderboard";
 import ImpactGallery from "@/components/donations/ImpactGallery";
 import NgoInvitation from "@/components/donations/NgoInvitation";
-import AppFooter from "@/components/donations/AppFooter";
 import { Button } from "@/components/ui/button";
 
 export default function DonationSupport() {
@@ -76,8 +75,6 @@ export default function DonationSupport() {
           <NgoInvitation />
         </motion.div>
       </main>
-      
-      <AppFooter />
     </div>
   );
 }
