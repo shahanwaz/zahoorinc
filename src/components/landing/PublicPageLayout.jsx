@@ -119,19 +119,4 @@ export default function PublicPageLayout({ children, showLoginBanner = false, lo
       </div>
     </div>
   );
-}}>
-      <style>{`
-        .public-layout h1, .public-layout h2, .public-layout h3,
-        .public-layout h4, .public-layout h5, .public-layout h6 { color: inherit; }
-      `}</style>
-      <div className="public-layout flex flex-col flex-1">
-        <PublicHeader />
-        <main className="flex-1 max-w-6xl mx-auto w-full px-4 md:px-6 py-8">
-          {showLoginBanner && <LoginRequiredBanner action={loginBannerAction} />}
-          {children}
-        </main>
-        <LandingFooter />
-      </div>
-    </div>
-  );
 }
