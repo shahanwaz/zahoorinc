@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { base44 } from "@/api/base44Client";
 import { motion } from "framer-motion";
 import LandingFooter from "./LandingFooter";
+import { Home, Calendar, Users, MessageCircle, User } from "lucide-react";
 
 function PublicHeader() {
   return (
@@ -62,9 +63,63 @@ export function LoginRequiredBanner({ action = "access full features" }) {
   );
 }
 
+function MobileBottomNav() {
+  const location = useLocation();
+  const navItems = [
+    { name: "Home", icon: Home, path: "Home" },
+    { name: "Events", icon: Calendar, path: "Events" },
+    { name: "Nearby", icon: Users, path: "Nearby" },
+    { name: "Ask", icon: MessageCircle, path: "Questions" },
+    { name: "Profile", icon: User, path: "Profile" },
+  ];
+  const isActive = (path) => location.pathname === createPageUrl(path);
+
+  return (
+    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-xl border-t border-emerald-200/50 rounded-t-3xl shadow-2xl md:hidden">
+      <div className="flex justify-around items-center h-20 px-2">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const active = isActive(item.path);
+          return (
+            <Link
+              key={item.name}
+              to={createPageUrl(item.path)}
+              className={`relative flex flex-col items-center justify-center w-full h-full transition-all duration-300 ease-out group ${active ? 'transform scale-110' : 'hover:scale-105'}`}
+            >
+              <div className={`relative flex items-center justify-center w-12 h-12 rounded-2xl transition-all duration-300 ${active ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-500/30' : 'bg-transparent group-hover:bg-emerald-50'}`}>
+                <Icon className={`w-6 h-6 transition-all duration-300 ${active ? 'text-white' : 'text-gray-400 group-hover:text-emerald-600'}`} />
+                {active && <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white shadow-md animate-pulse"></div>}
+              </div>
+              <span className={`text-xs font-medium mt-1.5 transition-all duration-300 ${active ? 'text-emerald-700 font-bold' : 'text-gray-400 group-hover:text-emerald-600'}`}>{item.name}</span>
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
 export default function PublicPageLayout({ children, showLoginBanner = false, loginBannerAction }) {
   return (
     <div className="min-h-screen bg-[#FAFDF9] flex flex-col" style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      <style>{`
+        .public-layout h1, .public-layout h2, .public-layout h3,
+        .public-layout h4, .public-layout h5, .public-layout h6 { color: inherit; }
+      `}</style>
+      <div className="public-layout flex flex-col flex-1">
+        <PublicHeader />
+        <main className="flex-1 max-w-6xl mx-auto w-full px-4 md:px-6 py-8 pb-24 md:pb-8">
+          {showLoginBanner && <LoginRequiredBanner action={loginBannerAction} />}
+          {children}
+        </main>
+        <div className="hidden md:block">
+          <LandingFooter />
+        </div>
+        <MobileBottomNav />
+      </div>
+    </div>
+  );
+}}>
       <style>{`
         .public-layout h1, .public-layout h2, .public-layout h3,
         .public-layout h4, .public-layout h5, .public-layout h6 { color: inherit; }
