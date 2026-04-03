@@ -3,8 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Home, Calendar, Users, User, MessageCircle, Bell, Menu } from "lucide-react";
 import RightSidebar from "./components/layout/RightSidebar";
-import DesktopHeader from "./components/layout/DesktopHeader";
-import DesktopSidebar from "./components/layout/DesktopSidebar";
+import WebLandingOnly from "./components/web/WebLandingOnly";
 import { base44 } from "@/api/base44Client";
 
 // Pages that NEVER need auth — render immediately with public layout
@@ -76,9 +75,9 @@ export default function Layout({ children, currentPageName }) {
     return children;
   }
 
-  // Landing page: always render without any wrapper (it has its own full layout)
-  if (currentPageName === "LandingPage") {
-    return children;
+  // Desktop: always show only the simple landing page — no auth, no navigation
+  if (isDesktop) {
+    return <WebLandingOnly />;
   }
 
   // Public pages: always render with PublicPageLayout, NO auth wait, NO redirect
@@ -91,25 +90,7 @@ export default function Layout({ children, currentPageName }) {
     );
   }
 
-  // Show loading while checking auth for protected pages (desktop only)
-  if (isDesktop && authLoading) {
-    return (
-      <div className="min-h-screen bg-emerald-50 flex items-center justify-center">
-        <div className="text-emerald-600 text-lg">Loading Zahoor...</div>
-      </div>
-    );
-  }
-
-  // Not logged in on a protected page (web): redirect to LandingPage, never to /login
-  if (!authLoading && !currentUser && isDesktop) {
-    window.location.href = createPageUrl("LandingPage");
-    return null;
-  }
-
-  // Desktop: No sidebar, render children directly (web already has header in WebHome)
-  if (isDesktop) {
-    return children;
-  }
+  // (desktop handled above)
 
   const navItems = [
   { name: "Home", icon: Home, path: "Home" },
