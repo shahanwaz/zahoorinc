@@ -127,10 +127,9 @@ export default function WebLandingOnly() {
       <div className="web-landing">
 
         {/* ── HERO ── */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-800 text-white">
-          {/* Decorative blobs */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-700/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+        <div className="relative overflow-hidden text-white" style={{ backgroundImage: "url('https://media.base44.com/images/public/68874558a4cb8143d474b0a5/10be7e500_ChatGPTImageApr13202611_57_51AM.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-emerald-950/90 pointer-events-none" />
 
           <div className="relative max-w-5xl mx-auto px-6 py-28 text-center">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
