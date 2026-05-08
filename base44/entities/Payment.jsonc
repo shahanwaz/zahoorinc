@@ -1,0 +1,139 @@
+{
+  "name": "Payment",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user making the payment"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Payment amount"
+    },
+    "currency": {
+      "type": "string",
+      "default": "INR",
+      "description": "Currency code"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "upi",
+        "net_banking",
+        "card",
+        "wallet",
+        "razorpay",
+        "stripe",
+        "paypal"
+      ],
+      "description": "Payment method used"
+    },
+    "payment_gateway": {
+      "type": "string",
+      "description": "Gateway used (Razorpay, Stripe, etc.)"
+    },
+    "gateway_transaction_id": {
+      "type": "string",
+      "description": "Transaction ID from payment gateway"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "initiated",
+        "pending",
+        "completed",
+        "failed",
+        "refunded"
+      ],
+      "default": "initiated",
+      "description": "Payment status"
+    },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "add_money",
+        "istikhara_request",
+        "ejara_request",
+        "donation",
+        "premium_subscription"
+      ],
+      "description": "Purpose of payment"
+    },
+    "reference_id": {
+      "type": "string",
+      "description": "ID of related entity (Istikhara request, Ejara post, etc.)"
+    },
+    "reference_type": {
+      "type": "string",
+      "enum": [
+        "istikhara",
+        "ejara",
+        "donation",
+        "subscription",
+        "wallet"
+      ],
+      "description": "Type of reference"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional payment metadata"
+    }
+  },
+  "required": [
+    "user_id",
+    "amount",
+    "payment_method",
+    "status",
+    "purpose"
+  ],
+  "rls": {
+    "create": {
+      "data.user_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "finance_admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "finance_admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "finance_admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
