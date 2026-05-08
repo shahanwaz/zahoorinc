@@ -121,7 +121,7 @@ export default function WhatsAppLogin() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4"
       style={{ background: "linear-gradient(145deg, #f0fdf4 0%, #ecfdf5 40%, #d1fae5 100%)" }}>
 
       {/* Islamic geometric bg */}
@@ -134,7 +134,7 @@ export default function WhatsAppLogin() {
       <div className="absolute top-0 right-0 w-72 h-72 bg-emerald-200 rounded-full opacity-20 blur-3xl -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-amber-200 rounded-full opacity-20 blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-      <div className="relative z-10 w-full max-w-sm px-4 py-10 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-sm mx-auto px-5 py-10 flex flex-col items-center">
 
         {/* Logo */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
