@@ -60,6 +60,7 @@ const AuthenticatedApp = () => {
           }
         />
       ))}
+      <Route path="/WhatsAppLogin" element={<WhatsAppLogin />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
