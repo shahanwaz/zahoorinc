@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zahoor — Hearts Await Zahoor</title>
+  <meta name="description" content="Connecting the global Shia community through spiritual tools, education, and community services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --emerald-50: #f0fdf4;
+      --emerald-100: #dcfce7;
+      --emerald-200: #bbf7d0;
+      --emerald-300: #86efac;
+      --emerald-400: #4ade80;
+      --emerald-500: #22c55e;
+      --emerald-600: #16a34a;
+      --emerald-700: #15803d;
+      --emerald-800: #166534;
+      --emerald-900: #14532d;
+      --emerald-950: #052e16;
+      --amber-300: #fcd34d;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #FAFDF9;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-brand img { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .nav-brand-text .name { font-size: 18px; font-weight: 900; color: #166534; display: block; line-height: 1; }
+    .nav-brand-text .tagline { font-size: 10px; color: var(--emerald-600); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .btn-outline {
+      padding: 10px 20px; border-radius: 12px; border: 2px solid var(--emerald-300);
+      color: var(--emerald-700); font-weight: 600; font-size: 14px; cursor: pointer;
+      background: transparent; transition: all 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--emerald-500); background: var(--emerald-50); }
+    .btn-primary {
+      padding: 10px 20px; border-radius: 12px; border: none;
+      color: white; font-weight: 700; font-size: 14px; cursor: pointer;
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+      box-shadow: 0 4px 14px rgba(22,163,74,0.35); transition: all 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(22,163,74,0.5); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f0fdf6, #FAFDF9, #f5f5f0);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/38/%D8%B5%D8%AD%D9%86_%D8%A7%DB%8C%D9%88%D8%A7%D9%86_%D8%B7%D9%84%D8%A7_%D9%88_%D8%B3%D9%82%D8%A7%D8%AE%D8%A7%D9%86%D9%87.jpg');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(6,42,23,0.78) 0%, rgba(22,101,52,0.65) 50%, rgba(78,50,10,0.55) 100%);
+    }
+    .hero-fade {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, #FAFDF9 0%, transparent 40%);
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      text-align: center; padding: 120px 24px 60px;
+      max-width: 900px; margin: 0 auto;
+      animation: fadeUp 0.8s ease-out;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+    .bismillah-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 999px;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fde68a; font-size: 15px; font-family: serif;
+      margin-bottom: 28px; letter-spacing: 0.5px;
+    }
+    .hero-h1 { font-size: clamp(40px, 8vw, 72px); font-weight: 900; line-height: 1.1; color: white; margin-bottom: 20px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .hero-h1 .gold { background: linear-gradient(90deg, #fcd34d, #fef3c7, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-p { font-size: clamp(16px, 2.5vw, 20px); color: rgba(209,250,229,0.9); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-hero-primary {
+      padding: 16px 36px; border-radius: 16px; border: none;
+      color: white; font-size: 17px; font-weight: 800; cursor: pointer;
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+      box-shadow: 0 8px 30px rgba(22,163,74,0.45); transition: all 0.25s; min-width: 200px;
+    }
+    .btn-hero-primary:hover { transform: scale(1.07); box-shadow: 0 12px 40px rgba(22,163,74,0.6); }
+    .btn-hero-outline {
+      padding: 16px 36px; border-radius: 16px;
+      color: #fde68a; font-size: 17px; font-weight: 800; cursor: pointer;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+      border: 2px solid rgba(255,255,255,0.35); transition: all 0.25s; min-width: 200px;
+    }
+    .btn-hero-outline:hover { transform: scale(1.07); background: rgba(255,255,255,0.2); }
+    .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; color: rgba(209,250,229,0.8); font-size: 14px; font-weight: 500; }
+    .scroll-indicator {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(10px)} }
+    .scroll-dot { width: 24px; height: 40px; border-radius: 999px; border: 2px solid rgba(110,231,183,0.7); display:flex; justify-content:center; padding-top: 8px; }
+    .scroll-dot-inner { width: 4px; height: 12px; background: #6ee7b7; border-radius: 999px; }
+
+    /* Floating shapes */
+    .floating-shape {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,222,128,0.1), rgba(22,163,74,0.05));
+      border: 1px solid rgba(110,231,183,0.2);
+      animation: floatShape 7s ease-in-out infinite;
+    }
+    @keyframes floatShape { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-20px) rotate(10deg)} }
+
+    /* ── STATS ── */
+    #stats {
+      padding: 64px 24px;
+      background: linear-gradient(90deg, var(--emerald-600), var(--emerald-700));
+      position: relative; overflow: hidden;
+    }
+    #stats::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpolygon points='30,5 55,22 55,47 30,60 5,47 5,22' fill='none' stroke='white' stroke-width='0.8' stroke-opacity='0.06'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; position: relative; z-index: 1; }
+    @media(min-width:768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat-card { text-align: center; color: white; }
+    .stat-icon { font-size: 36px; margin-bottom: 8px; }
+    .stat-num { font-size: clamp(28px, 5vw, 40px); font-weight: 900; margin-bottom: 4px; }
+    .stat-label { color: rgba(209,250,229,0.8); font-size: 14px; font-weight: 500; }
+
+    /* ── ABOUT ── */
+    #about { padding: 96px 24px; background: white; }
+    .about-grid { max-width: 1100px; margin: 0 auto; display: grid; gap: 64px; align-items: center; }
+    @media(min-width:768px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+    .section-badge {
+      display: inline-block; padding: 6px 16px; border-radius: 999px;
+      background: var(--emerald-100); color: var(--emerald-700);
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;
+    }
+    .section-h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; color: var(--emerald-900); line-height: 1.15; margin-bottom: 20px; }
+    .section-h2 .gradient { background: linear-gradient(90deg, var(--emerald-500), var(--emerald-700)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .about-p { color: rgba(21,128,61,0.85); font-size: 17px; line-height: 1.75; margin-bottom: 12px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .tag { padding: 8px 16px; border-radius: 12px; background: var(--emerald-50); border: 1px solid var(--emerald-200); color: var(--emerald-700); font-size: 13px; font-weight: 600; }
+    .mission-card {
+      background: linear-gradient(135deg, var(--emerald-600), var(--emerald-800));
+      border-radius: 24px; padding: 40px; color: white; position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(22,163,74,0.25);
+    }
+    .mission-card::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z' fill='none' stroke='white' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+    .mission-card .mc-content { position: relative; z-index: 1; }
+    .mission-card h3 { font-size: 22px; font-weight: 800; margin: 12px 0 12px; color: white; }
+    .mission-card p { color: rgba(209,250,229,0.9); line-height: 1.7; font-size: 15px; }
+    .float-badge {
+      position: absolute; background: rgba(255,255,255,0.95); border: 1px solid var(--emerald-100);
+      border-radius: 16px; padding: 16px 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      animation: floatBadge 4s ease-in-out infinite;
+    }
+    @keyframes floatBadge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .float-badge-1 { bottom: -24px; left: -24px; animation-delay: 0s; }
+    .float-badge-2 { top: -24px; right: -12px; background: linear-gradient(135deg, var(--amber-400), var(--amber-500)); color: white; animation-delay: 1s; animation-duration: 5s; }
+    .float-badge .fb-icon { font-size: 28px; margin-bottom: 4px; }
+    .float-badge .fb-label { font-size: 13px; font-weight: 700; color: var(--emerald-800); }
+    .float-badge .fb-sub { font-size: 11px; color: var(--emerald-600); }
+    .float-badge-2 .fb-label { color: white; }
+    .float-badge-2 .fb-sub { color: rgba(255,255,255,0.8); font-weight: 800; font-size: 22px; }
+    .about-right { position: relative; padding: 32px 16px; }
+
+    /* ── FEATURES ── */
+    #features { padding: 96px 24px; background: linear-gradient(180deg, white, var(--emerald-50)); }
+    .section-center { text-align: center; margin-bottom: 64px; }
+    .section-p { color: rgba(21,128,61,0.75); font-size: 17px; max-width: 600px; margin: 12px auto 0; }
+    .features-grid { max-width: 1200px; margin: 0 auto; display: grid; gap: 20px; grid-template-columns: 1fr; }
+    @media(min-width:540px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:900px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(min-width:1200px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
+    .feature-card {
+      border-radius: 20px; padding: 28px; cursor: default;
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s;
+    }
+    .feature-card.visible { opacity: 1; transform: translateY(0); }
+    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(16,185,129,0.15); }
+    .feature-card .fc-icon { font-size: 36px; margin-bottom: 16px; display: block; transition: transform 0.3s; }
+    .feature-card:hover .fc-icon { transform: scale(1.15); }
+    .feature-card h3 { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: #4b5563; line-height: 1.6; }
+    .fc-blue { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; } .fc-blue h3 { color: #2563eb; }
+    .fc-emerald { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; } .fc-emerald h3 { color: var(--emerald-600); }
+    .fc-purple { background: linear-gradient(135deg, #faf5ff, #ede9fe); border: 1px solid #ddd6fe; } .fc-purple h3 { color: #7c3aed; }
+    .fc-amber { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fde68a; } .fc-amber h3 { color: #d97706; }
+    .fc-red { background: linear-gradient(135deg, #fff1f2, #ffe4e6); border: 1px solid #fecdd3; } .fc-red h3 { color: #dc2626; }
+    .fc-pink { background: linear-gradient(135deg, #fdf2f8, #fce7f3); border: 1px solid #f9a8d4; } .fc-pink h3 { color: #db2777; }
+    .fc-teal { background: linear-gradient(135deg, #f0fdfa, #ccfbf1); border: 1px solid #99f6e4; } .fc-teal h3 { color: #0d9488; }
+    .fc-indigo { background: linear-gradient(135deg, #eef2ff, #e0e7ff); border: 1px solid #c7d2fe; } .fc-indigo h3 { color: #4338ca; }
+    .fc-orange { background: linear-gradient(135deg, #fff7ed, #ffedd5); border: 1px solid #fed7aa; } .fc-orange h3 { color: #ea580c; }
+    .fc-green { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #86efac; } .fc-green h3 { color: #16a34a; }
+    .fc-slate { background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 1px solid #cbd5e1; } .fc-slate h3 { color: #475569; }
+    .fc-cyan { background: linear-gradient(135deg, #ecfeff, #cffafe); border: 1px solid #a5f3fc; } .fc-cyan h3 { color: #0891b2; }
+
+    /* ── SPIRITUAL TOOLS ── */
+    #spiritual {
+      padding: 96px 24px;
+      background: linear-gradient(135deg, var(--emerald-900), var(--emerald-800), var(--emerald-900));
+      position: relative; overflow: hidden;
+    }
+    #spiritual::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpolygon points='60,10 110,35 110,85 60,110 10,85 10,35' fill='none' stroke='white' stroke-width='1' stroke-opacity='0.07'/%3E%3Ccircle cx='60' cy='60' r='20' fill='none' stroke='white' stroke-width='0.8' stroke-opacity='0.07'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+    .spiritual-badge { background: rgba(255,255,255,0.1) !important; color: rgba(209,250,229,1) !important; border: 1px solid rgba(255,255,255,0.2) !important; backdrop-filter: blur(8px); }
+    .spiritual-h2 { color: white !important; }
+    .spiritual-p { color: rgba(167,243,208,0.9) !important; }
+    .spiritual-gradient { background: linear-gradient(90deg, #fcd34d, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tools-grid { max-width: 1100px; margin: 0 auto; display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media(min-width:540px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:900px) { .tools-grid { grid-template-columns: repeat(4, 1fr); } }
+    .tool-card {
+      background: rgba(255,255,255,0.05); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+      padding: 28px; cursor: default; transition: all 0.3s;
+      opacity: 0; transform: translateY(30px);
+    }
+    .tool-card.visible { opacity: 1; transform: translateY(0); }
+    .tool-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); transform: translateY(-8px) scale(1.03); }
+    .tool-icon { font-size: 44px; margin-bottom: 20px; display: block; animation: rotateIdle 4s ease-in-out infinite; }
+    @keyframes rotateIdle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(5deg)} 75%{transform:rotate(-5deg)} }
+    .tool-card h3 { color: white; font-weight: 800; font-size: 18px; margin-bottom: 10px; }
+    .tool-card p { color: rgba(167,243,208,0.8); font-size: 14px; line-height: 1.6; }
+
+    /* ── HOW IT WORKS ── */
+    #how { padding: 96px 24px; background: white; position: relative; overflow: hidden; }
+    .how-bg { position: absolute; top:0; right:0; width:50%; height:100%; background: linear-gradient(to left, rgba(240,253,244,0.6), transparent); pointer-events:none; }
+    .steps-container { max-width: 800px; margin: 0 auto; position: relative; }
+    .steps-line { position: absolute; left: 50%; top:0; bottom:0; width: 2px; background: linear-gradient(to bottom, var(--emerald-200), var(--emerald-400), var(--emerald-200)); transform: translateX(-50%); display:none; }
+    @media(min-width:768px) { .steps-line { display:block; } }
+    .step-item { display: flex; align-items: center; gap: 24px; margin-bottom: 64px; opacity:0; transform:translateX(-40px); transition: all 0.65s ease; }
+    .step-item.even { flex-direction: row-reverse; transform:translateX(40px); }
+    .step-item.visible { opacity:1; transform:translateX(0) !important; }
+    .step-content { flex:1; }
+    .step-content.right { text-align: right; }
+    .step-num-big { font-size: 52px; font-weight: 900; color: var(--emerald-100); line-height: 1; }
+    .step-emoji { font-size: 36px; margin-bottom: 10px; display: block; }
+    .step-content h3 { font-size: 22px; font-weight: 800; color: var(--emerald-900); margin-bottom: 8px; }
+    .step-content p { color: rgba(21,128,61,0.75); line-height: 1.65; font-size: 15px; }
+    .step-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-700));
+      display: none; align-items: center; justify-content: center;
+      color: white; font-weight: 800; font-size: 14px; flex-shrink: 0;
+      border: 4px solid white; box-shadow: 0 8px 24px rgba(22,163,74,0.35); z-index: 1;
+    }
+    @media(min-width:768px) { .step-circle { display: flex; } }
+    .step-spacer { flex:1; display:none; }
+    @media(min-width:768px) { .step-spacer { display:block; } }
+
+    /* ── CTA ── */
+    #cta { padding: 96px 24px; background: linear-gradient(135deg, var(--emerald-50), white); position: relative; overflow: hidden; }
+    #cta::before { content:''; position:absolute; top:0; left:0; width:384px; height:384px; background: radial-gradient(circle, rgba(187,247,208,0.35), transparent); border-radius:50%; transform:translate(-50%,-50%); }
+    #cta::after { content:''; position:absolute; bottom:0; right:0; width:384px; height:384px; background: radial-gradient(circle, rgba(254,243,199,0.35), transparent); border-radius:50%; transform:translate(50%,50%); }
+    .cta-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .cta-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 999px;
+      background: var(--emerald-100); border: 1px solid var(--emerald-200);
+      color: var(--emerald-700); font-weight: 700; font-size: 14px; margin-bottom: 32px;
+      animation: scalePulse 3s ease-in-out infinite;
+    }
+    @keyframes scalePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    .cta-h2 { font-size: clamp(32px, 6vw, 56px); font-weight: 900; color: var(--emerald-900); line-height: 1.15; margin-bottom: 24px; }
+    .cta-h2 .gradient { background: linear-gradient(90deg, var(--emerald-500), var(--emerald-600), var(--amber-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-p { color: rgba(21,128,61,0.85); font-size: 18px; line-height: 1.7; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-cta-primary {
+      padding: 20px 44px; border-radius: 16px; border: none;
+      color: white; font-size: 18px; font-weight: 900; cursor: pointer;
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+      box-shadow: 0 12px 40px rgba(22,163,74,0.4); transition: all 0.25s;
+    }
+    .btn-cta-primary:hover { transform: scale(1.07); box-shadow: 0 16px 50px rgba(22,163,74,0.55); }
+    .btn-cta-outline {
+      padding: 20px 44px; border-radius: 16px; cursor: pointer;
+      color: var(--emerald-700); font-size: 18px; font-weight: 900;
+      background: white; border: 2px solid var(--emerald-200);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06); transition: all 0.25s;
+    }
+    .btn-cta-outline:hover { transform: scale(1.07); background: var(--emerald-50); }
+    .testimonials-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media(min-width:640px) { .testimonials-grid { grid-template-columns: repeat(3,1fr); } }
+    .testimonial {
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+      border: 1px solid var(--emerald-100); border-radius: 20px;
+      padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      text-align: left; transition: transform 0.3s;
+    }
+    .testimonial:hover { transform: translateY(-5px); }
+    .testimonial .t-quote { color: rgba(21,128,61,0.8); font-size: 14px; line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .t-meta { display: flex; align-items: center; gap: 8px; }
+    .t-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--emerald-400), var(--emerald-600)); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 800; flex-shrink: 0; }
+    .t-name { font-size: 12px; font-weight: 800; color: var(--emerald-800); }
+    .t-role { font-size: 11px; color: var(--emerald-500); }
+    .t-stars { margin-left: auto; color: var(--amber-400); font-size: 12px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--emerald-950); color: white; }
+    .footer-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(251,191,36,0.6), transparent); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 64px 24px 32px; }
+    .footer-grid { display: grid; gap: 48px; grid-template-columns: 1fr; }
+    @media(min-width:768px) { .footer-grid { grid-template-columns: repeat(3,1fr); } }
+    .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-brand img { width: 48px; height: 48px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    .footer-brand .name { font-size: 20px; font-weight: 900; color: white; display: block; line-height: 1; }
+    .footer-brand .tagline { font-size: 10px; color: var(--amber-300); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+    .footer-p { color: rgba(167,243,208,0.65); font-size: 14px; line-height: 1.7; max-width: 280px; }
+    .footer-heading { color: var(--amber-300); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(167,243,208,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--amber-300); }
+    .social-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .social-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: all 0.25s; border: none; cursor: pointer;
+    }
+    .social-btn:hover { background: rgba(255,255,255,0.18); transform: scale(1.15); }
+    .social-btn svg { width: 20px; height: 20px; }
+    .footer-bottom { border-top: 1px solid rgba(22,101,52,0.4); margin-top: 48px; padding-top: 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer-copy { color: rgba(74,222,128,0.5); font-size: 14px; }
+    .footer-live { display: flex; align-items: center; gap: 8px; color: rgba(74,222,128,0.55); font-size: 13px; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-400); animation: pulseDot 1.5s ease-in-out infinite; }
+    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+    /* ── RESPONSIVE NAV ── */
+    @media(max-width:600px) { nav { padding: 12px 16px; } .nav-links .btn-outline { display:none; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68874558a4cb8143d474b0a5/20b523e25_487ad098c_yabaqiyatullah.png" alt="Zahoor Logo" />
+    <div class="nav-brand-text">
+      <span class="name">Zahoor</span>
+      <span class="tagline">Hearts Await Zahoor</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#features" class="btn-outline">Features</a>
+    <a href="#" class="btn-primary" onclick="alert('Please visit the Zahoor app to sign in.')">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-fade"></div>
+  <!-- Floating Shapes -->
+  <div class="floating-shape" style="left:8%;top:15%;width:80px;height:80px;animation-delay:0s;animation-duration:6s"></div>
+  <div class="floating-shape" style="left:88%;top:20%;width:60px;height:60px;animation-delay:1s;animation-duration:7s"></div>
+  <div class="floating-shape" style="left:5%;top:65%;width:100px;height:100px;animation-delay:2s;animation-duration:8s"></div>
+  <div class="floating-shape" style="left:92%;top:70%;width:70px;height:70px;animation-delay:0.5s;animation-duration:6.5s"></div>
+  <div class="hero-content">
+    <div class="bismillah-badge">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h1 class="hero-h1">
+      Connecting the<br>
+      <span class="gold">Global Shia</span><br>
+      Community
+    </h1>
+    <p class="hero-p">Zahoor brings together millions of believers — from daily Duas and Majalis to Ejara services, Islamic Calendar, and Istikhara. One platform, one Ummah.</p>
+    <div class="hero-btns">
+      <button class="btn-hero-primary" onclick="alert('Please visit the Zahoor app to create an account.')">🌿 Create Account</button>
+      <button class="btn-hero-outline" onclick="alert('Please visit the Zahoor app to sign in.')">✨ Sign In</button>
+    </div>
+    <div class="hero-badges">
+      <span>🌍 Global Community</span>
+      <span>🔒 Secure & Private</span>
+      <span>📱 Mobile & Web</span>
+      <span>🆓 Free to Join</span>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-dot"><div class="scroll-dot-inner"></div></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-card reveal-stat"><div class="stat-icon">🌍</div><div class="stat-num" data-target="50000" data-suffix="+">0+</div><div class="stat-label">Users Worldwide</div></div>
+    <div class="stat-card reveal-stat"><div class="stat-icon">❓</div><div class="stat-num" data-target="12000" data-suffix="+">0+</div><div class="stat-label">Questions Answered</div></div>
+    <div class="stat-card reveal-stat"><div class="stat-icon">🎤</div><div class="stat-num" data-target="3500" data-suffix="+">0+</div><div class="stat-label">Majalis Hosted</div></div>
+    <div class="stat-card reveal-stat"><div class="stat-icon">🕊️</div><div class="stat-num" data-target="8000" data-suffix="+">0+</div><div class="stat-label">Ejara Completed</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal-left">
+      <span class="section-badge">About Zahoor</span>
+      <h2 class="section-h2">A Platform Built <span class="gradient">with Love</span> for the Ummah</h2>
+      <p class="about-p">Zahoor is a comprehensive Islamic social platform designed specifically for the global Shia Muslim community. We combine spiritual tools, community services, and educational resources into one beautifully crafted experience.</p>
+      <p class="about-p" style="opacity:0.8">From Prayer Times and Qibla direction to Ejara services, Istikhara, and live Majalis — Zahoor is your complete spiritual companion.</p>
+      <div class="tag-row">
+        <span class="tag">🕌 Spiritual Tools</span>
+        <span class="tag">🤝 Community First</span>
+        <span class="tag">🌐 Global Reach</span>
+        <span class="tag">🔒 Safe & Secure</span>
+      </div>
+    </div>
+    <div class="about-right reveal-right">
+      <div class="mission-card">
+        <div class="mc-content">
+          <div style="font-size:44px">🌿</div>
+          <h3>Our Mission</h3>
+          <p>To empower every believer with access to authentic Islamic resources, meaningful community connections, and trusted spiritual services — anytime, anywhere.</p>
+        </div>
+      </div>
+      <div class="float-badge float-badge-1">
+        <div class="fb-icon">🕌</div>
+        <div class="fb-label">Prayer Times</div>
+        <div class="fb-sub">Auto-location based</div>
+      </div>
+      <div class="float-badge float-badge-2">
+        <div class="fb-icon">⭐</div>
+        <div class="fb-label">Trusted by</div>
+        <div class="fb-sub">50K+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-center">
+    <span class="section-badge">Everything You Need</span>
+    <h2 class="section-h2">Powerful Features, <span class="gradient">One Platform</span></h2>
+    <p class="section-p">From spiritual tools to community services — Zahoor is your complete Islamic companion.</p>
+  </div>
+  <div class="features-grid" id="featuresGrid">
+    <div class="feature-card fc-blue"><span class="fc-icon">❓</span><h3>Community Q&A</h3><p>Ask scholars and community members your Islamic questions and get verified answers.</p></div>
+    <div class="feature-card fc-emerald"><span class="fc-icon">🕊️</span><h3>Ejara Services</h3><p>Book trusted Maulanas for Majalis, Nikahs, and other religious ceremonies.</p></div>
+    <div class="feature-card fc-purple"><span class="fc-icon">🔮</span><h3>Istikhara</h3><p>Request Istikhara from qualified scholars securely and privately.</p></div>
+    <div class="feature-card fc-amber"><span class="fc-icon">🎤</span><h3>Majalis & Lectures</h3><p>Watch and share Majalis, Bayans, and scholarly lectures from around the world.</p></div>
+    <div class="feature-card fc-red"><span class="fc-icon">🎥</span><h3>Media Library</h3><p>A rich library of Nauhas, Duas, Quran Tafseer, and spiritual content.</p></div>
+    <div class="feature-card fc-pink"><span class="fc-icon">👶</span><h3>Kids Section</h3><p>Safe, engaging Islamic educational content specially curated for children.</p></div>
+    <div class="feature-card fc-teal"><span class="fc-icon">🖼️</span><h3>Gallery</h3><p>Beautiful Islamic imagery, calligraphy, and celebration graphics to share.</p></div>
+    <div class="feature-card fc-indigo"><span class="fc-icon">👳</span><h3>Find Maulana</h3><p>Search and connect with Maulanas by location, specialty, and availability.</p></div>
+    <div class="feature-card fc-orange"><span class="fc-icon">📅</span><h3>Events</h3><p>Discover and host Mahfils, Majalis, and community events near you.</p></div>
+    <div class="feature-card fc-green"><span class="fc-icon">💰</span><h3>Wallet</h3><p>Secure in-app wallet to pay for Istikhara, Ejara, and donations.</p></div>
+    <div class="feature-card fc-slate"><span class="fc-icon">🔖</span><h3>Saved Items</h3><p>Bookmark your favorite Duas, lectures, and content for quick access.</p></div>
+    <div class="feature-card fc-cyan"><span class="fc-icon">🌐</span><h3>Language Support</h3><p>Access Zahoor in multiple languages with full RTL support for Arabic & Urdu.</p></div>
+  </div>
+</section>
+
+<!-- SPIRITUAL TOOLS -->
+<section id="spiritual">
+  <div class="section-center" style="position:relative;z-index:1">
+    <span class="section-badge spiritual-badge">Spiritual Tools</span>
+    <h2 class="section-h2 spiritual-h2">Your Daily <span class="spiritual-gradient">Spiritual Companion</span></h2>
+    <p class="section-p spiritual-p">Built-in Islamic tools that help you stay connected to your faith every single day.</p>
+  </div>
+  <div class="tools-grid" style="position:relative;z-index:1">
+    <div class="tool-card"><span class="tool-icon">🕋</span><h3>Prayer Times</h3><p>Accurate daily Salah times based on your real-time location with Azan alerts.</p></div>
+    <div class="tool-card"><span class="tool-icon">🧭</span><h3>Qibla Compass</h3><p>Instantly find the direction of the Kaaba from anywhere in the world.</p></div>
+    <div class="tool-card"><span class="tool-icon">📖</span><h3>Duas & Ziyarat</h3><p>Hundreds of authentic Duas in Arabic with transliteration and translation.</p></div>
+    <div class="tool-card"><span class="tool-icon">📅</span><h3>Islamic Calendar</h3><p>Full Hijri calendar with all major Islamic dates, events, and observances.</p></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-bg"></div>
+  <div class="section-center" style="position:relative;z-index:1">
+    <span class="section-badge">Getting Started</span>
+    <h2 class="section-h2">How <span class="gradient">Zahoor Works</span></h2>
+    <p class="section-p">Simple steps to join the global community.</p>
+  </div>
+  <div class="steps-container" style="position:relative;z-index:1">
+    <div class="steps-line"></div>
+    <div class="step-item" id="step0">
+      <div class="step-content">
+        <div class="step-num-big">01</div>
+        <span class="step-emoji">📝</span>
+        <h3>Create Account</h3>
+        <p>Sign up for free in under a minute. No credit card required. Join thousands of believers worldwide.</p>
+      </div>
+      <div class="step-circle">01</div>
+      <div class="step-spacer"></div>
+    </div>
+    <div class="step-item even" id="step1">
+      <div class="step-content right">
+        <div class="step-num-big">02</div>
+        <span class="step-emoji">🎭</span>
+        <h3>Select Your Role</h3>
+        <p>Choose your role — General User, Maulana, Zakir, Zakera, or Tutor — for a personalized experience.</p>
+      </div>
+      <div class="step-circle">02</div>
+      <div class="step-spacer"></div>
+    </div>
+    <div class="step-item" id="step2">
+      <div class="step-content">
+        <div class="step-num-big">03</div>
+        <span class="step-emoji">🌟</span>
+        <h3>Explore Features</h3>
+        <p>Discover Prayer Times, Duas, Ejara, Majalis, Media Library, Q&A, and dozens of spiritual tools.</p>
+      </div>
+      <div class="step-circle">03</div>
+      <div class="step-spacer"></div>
+    </div>
+    <div class="step-item even" id="step3">
+      <div class="step-content right">
+        <div class="step-num-big">04</div>
+        <span class="step-emoji">🤝</span>
+        <h3>Connect & Grow</h3>
+        <p>Join the global Shia community. Share knowledge, attend events, and support each other in faith.</p>
+      </div>
+      <div class="step-circle">04</div>
+      <div class="step-spacer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="cta-pill">🌿 Join 50,000+ Believers</div>
+    <h2 class="cta-h2">Start Your <span class="gradient">Spiritual Journey</span><br>Today</h2>
+    <p class="cta-p">Join Zahoor for free and experience the most comprehensive Islamic community platform ever built. Your faith, your community, your Zahoor.</p>
+    <div class="cta-btns">
+      <button class="btn-cta-primary" onclick="alert('Please visit the Zahoor app to create an account.')">🌿 Create Free Account</button>
+      <button class="btn-cta-outline" onclick="alert('Please visit the Zahoor app to sign in.')">✨ Sign In</button>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="t-quote">"Zahoor has transformed my daily spiritual routine. The Prayer Times and Duas are incredibly accurate."</p>
+        <div class="t-meta"><div class="t-avatar">F</div><div><div class="t-name">Fatima Z.</div><div class="t-role">Member</div></div><div class="t-stars">★★★★★</div></div>
+      </div>
+      <div class="testimonial">
+        <p class="t-quote">"I found a wonderful Maulana for our family Majlis through Ejara. Highly recommended!"</p>
+        <div class="t-meta"><div class="t-avatar">A</div><div><div class="t-name">Ahmed R.</div><div class="t-role">Community Leader</div></div><div class="t-stars">★★★★★</div></div>
+      </div>
+      <div class="testimonial">
+        <p class="t-quote">"The Kids Section keeps my children engaged with Islamic content safely. JazakAllah!"</p>
+        <div class="t-meta"><div class="t-avatar">M</div><div><div class="t-name">Maryam K.</div><div class="t-role">Parent</div></div><div class="t-stars">★★★★★</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-line"></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68874558a4cb8143d474b0a5/20b523e25_487ad098c_yabaqiyatullah.png" alt="Zahoor" />
+          <div><span class="name">Zahoor</span><span class="tagline">Hearts Await Zahoor</span></div>
+        </div>
+        <p class="footer-p">Connecting the global Shia community through spiritual tools, education, and community services.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Help & Report</a></li>
+          <li><a href="#">Donate & Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Follow Us</div>
+        <div class="social-row">
+          <a href="https://facebook.com" target="_blank" class="social-btn" aria-label="Facebook" style="color:#1877F2">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram" style="color:#E1306C">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" class="social-btn" aria-label="YouTube" style="color:#FF0000">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://x.com" target="_blank" class="social-btn" aria-label="X" style="color:white">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://telegram.org" target="_blank" class="social-btn" aria-label="Telegram" style="color:#26A5E4">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Zahoor. All rights reserved.</p>
+      <div class="footer-live"><div class="live-dot"></div>Platform is live & growing</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Sticky Nav ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── Animated Counters ──
+  let countersStarted = false;
+  function startCounters() {
+    if (countersStarted) return;
+    const statsSection = document.getElementById('stats');
+    const rect = statsSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      countersStarted = true;
+      document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        let start = 0;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= target) { el.textContent = target.toLocaleString() + suffix; clearInterval(timer); }
+          else { el.textContent = Math.floor(start).toLocaleString() + suffix; }
+        }, 16);
+      });
+    }
+  }
+  window.addEventListener('scroll', startCounters);
+  startCounters();
+
+  // ── Intersection Observer for scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // stagger feature cards
+        if (entry.target.classList.contains('features-grid')) {
+          const cards = entry.target.querySelectorAll('.feature-card');
+          cards.forEach((c, i) => {
+            setTimeout(() => c.classList.add('visible'), i * 60);
+          });
+        }
+        if (entry.target.id === 'spiritual') {
+          const cards = entry.target.querySelectorAll('.tool-card');
+          cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 100));
+        }
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  // Observe sections and elements
+  document.querySelectorAll('#featuresGrid, #spiritual, .step-item, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // Reveal left/right for about section
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.style.cssText += 'opacity:1;transform:none;transition:all 0.8s ease';
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal-left, .reveal-right').forEach(el => {
+    el.style.cssText = el.classList.contains('reveal-left')
+      ? 'opacity:0;transform:translateX(-50px);'
+      : 'opacity:0;transform:translateX(50px);';
+    aboutObserver.observe(el);
+  });
+
+  // Step items
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.step-item').forEach(el => stepObserver.observe(el));
+</script>
+</body>
+</html>
