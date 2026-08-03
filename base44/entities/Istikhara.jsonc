@@ -1,0 +1,91 @@
+{
+  "name": "Istikhara",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user requesting the Istikhara"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Cached name of the user"
+    },
+    "user_avatar": {
+      "type": "string",
+      "description": "Cached avatar of the user"
+    },
+    "query": {
+      "type": "string",
+      "description": "The user's concern or question for the Istikhara"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional additional notes from the user"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "taken",
+        "responded",
+        "completed",
+        "cancelled"
+      ],
+      "default": "pending",
+      "description": "The current status of the request"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "paid",
+        "escrow",
+        "released",
+        "refunded"
+      ],
+      "default": "escrow",
+      "description": "Payment status tracking"
+    },
+    "amount": {
+      "type": "number",
+      "default": 50,
+      "description": "Amount paid for the Istikhara service"
+    },
+    "scholar_id": {
+      "type": "string",
+      "description": "ID of the scholar who claimed the request"
+    },
+    "scholar_name": {
+      "type": "string",
+      "description": "Cached name of the scholar"
+    },
+    "scholar_role": {
+      "type": "string",
+      "enum": [
+        "maulana",
+        "zakir",
+        "zakera"
+      ],
+      "description": "Role of the scholar"
+    },
+    "response": {
+      "type": "string",
+      "description": "The scholar's private response (DEPRECATED - use IstikharaResponse entity)"
+    },
+    "response_attachment_url": {
+      "type": "string",
+      "description": "URL for any attachment with the response (DEPRECATED)"
+    },
+    "responded_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the scholar responded"
+    }
+  },
+  "required": [
+    "user_id",
+    "user_name",
+    "query",
+    "amount",
+    "payment_status"
+  ]
+}

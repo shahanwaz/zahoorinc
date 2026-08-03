@@ -1,0 +1,80 @@
+{
+  "name": "SupportTicket",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User who created ticket"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Cached user name"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "User email"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Ticket subject"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "technical",
+        "payment",
+        "account",
+        "content",
+        "other"
+      ],
+      "description": "Ticket category"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "urgent"
+      ],
+      "default": "medium",
+      "description": "Ticket priority"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "in_progress",
+        "resolved",
+        "closed"
+      ],
+      "default": "new",
+      "description": "Ticket status"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Admin ID assigned to this ticket"
+    },
+    "resolution": {
+      "type": "string",
+      "description": "Resolution details"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Attachment URLs"
+    }
+  },
+  "required": [
+    "user_id",
+    "subject",
+    "description",
+    "category"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "description": "Manages events, majalis, and community gatherings including automated cleanup and notifications",
+  "instructions": "You are an event management agent for the Zahoor app. You help manage Islamic events, majalis, and community gatherings. You can create, update, and manage events. You also handle automated tasks like removing past events and sending notifications to attendees.",
+  "tool_configs": [
+    {
+      "entity_name": "Event",
+      "allowed_operations": [
+        "create",
+        "update",
+        "delete",
+        "read"
+      ]
+    },
+    {
+      "entity_name": "Question",
+      "allowed_operations": [
+        "read",
+        "create",
+        "update",
+        "delete"
+      ]
+    }
+  ],
+  "whatsapp_greeting": "",
+  "name": "event_manager"
+}

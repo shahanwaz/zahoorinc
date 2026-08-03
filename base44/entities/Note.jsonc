@@ -1,0 +1,50 @@
+{
+  "name": "Note",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the note (optional, auto-generated from first line if empty)"
+    },
+    "content": {
+      "type": "string",
+      "description": "Text content of the note"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "audio"
+      ],
+      "description": "Type of note"
+    },
+    "audio_url": {
+      "type": "string",
+      "description": "URL of the audio file for audio notes"
+    },
+    "audio_duration": {
+      "type": "number",
+      "description": "Duration of audio in seconds"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user who created the note"
+    },
+    "is_pinned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the note is pinned to top"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional tags for organizing notes"
+    }
+  },
+  "required": [
+    "user_id",
+    "type"
+  ]
+}

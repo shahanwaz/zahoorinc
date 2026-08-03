@@ -1,0 +1,88 @@
+{
+  "name": "Maulana",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full name of the Maulana"
+    },
+    "profile_image_url": {
+      "type": "string",
+      "description": "URL of the profile picture"
+    },
+    "bio": {
+      "type": "string",
+      "description": "Short biography of the Maulana"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "amama_type": {
+      "type": "string",
+      "enum": [
+        "black",
+        "white"
+      ],
+      "description": "Color of the Amama (Black for Syed, White for Non-Syed)"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of services offered (e.g., Majalis, Nikah)"
+    },
+    "availability": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Availability schedule (e.g., Weekends, Evening)"
+    },
+    "is_available_for_jamat": {
+      "type": "boolean",
+      "default": false
+    },
+    "contact_info": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "expected_hadiya": {
+      "type": "string",
+      "description": "Optional field for expected compensation"
+    },
+    "rating": {
+      "type": "number",
+      "default": 0
+    },
+    "review_count": {
+      "type": "number",
+      "default": 0
+    },
+    "is_verified": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "amama_type",
+    "location",
+    "services"
+  ]
+}

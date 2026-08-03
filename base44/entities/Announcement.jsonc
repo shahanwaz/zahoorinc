@@ -1,0 +1,61 @@
+{
+  "name": "Announcement",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Announcement title"
+    },
+    "content": {
+      "type": "string",
+      "description": "Announcement content"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "urgent",
+        "feature"
+      ],
+      "default": "info",
+      "description": "Announcement type"
+    },
+    "target_audience": {
+      "type": "string",
+      "enum": [
+        "all",
+        "maulana",
+        "tutors",
+        "scholars",
+        "general"
+      ],
+      "default": "all",
+      "description": "Who should see this"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether announcement is currently shown"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When to start showing"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When to stop showing"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Admin who created this"
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "type"
+  ]
+}

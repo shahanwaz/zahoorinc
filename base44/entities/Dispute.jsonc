@@ -1,0 +1,75 @@
+{
+  "name": "Dispute",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Related transaction ID"
+    },
+    "service_type": {
+      "type": "string",
+      "enum": [
+        "ejara",
+        "istikhara",
+        "tuition",
+        "donation"
+      ],
+      "description": "Type of service disputed"
+    },
+    "service_id": {
+      "type": "string",
+      "description": "ID of service (Ejara post, Istikhara request, etc.)"
+    },
+    "complainant_id": {
+      "type": "string",
+      "description": "User who filed dispute"
+    },
+    "respondent_id": {
+      "type": "string",
+      "description": "Other party in dispute"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Disputed amount"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for dispute"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Evidence URLs (screenshots, etc.)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "under_review",
+        "resolved",
+        "closed"
+      ],
+      "default": "pending",
+      "description": "Dispute status"
+    },
+    "resolution": {
+      "type": "string",
+      "description": "Final resolution"
+    },
+    "resolved_by": {
+      "type": "string",
+      "description": "Admin who resolved dispute"
+    },
+    "refund_amount": {
+      "type": "number",
+      "description": "Amount refunded if applicable"
+    }
+  },
+  "required": [
+    "service_type",
+    "complainant_id",
+    "reason"
+  ]
+}

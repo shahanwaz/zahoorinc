@@ -1,0 +1,69 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "user_type": {
+      "type": "string",
+      "enum": [
+        "general",
+        "tutor",
+        "maulana",
+        "zakir",
+        "zakera",
+        "admin"
+      ],
+      "description": "User role in the system"
+    },
+    "profile_image": {
+      "type": "string",
+      "format": "uri"
+    },
+    "onboardingCompleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "wallet_balance": {
+      "type": "number",
+      "default": 0,
+      "description": "Current wallet balance in INR"
+    },
+    "total_earned": {
+      "type": "number",
+      "default": 0,
+      "description": "Total amount earned through services"
+    },
+    "total_withdrawn": {
+      "type": "number",
+      "default": 0,
+      "description": "Total amount withdrawn to bank"
+    },
+    "bank_details": {
+      "type": "object",
+      "properties": {
+        "account_holder_name": {
+          "type": "string"
+        },
+        "account_number": {
+          "type": "string"
+        },
+        "ifsc_code": {
+          "type": "string"
+        },
+        "bank_name": {
+          "type": "string"
+        }
+      },
+      "description": "Bank account details for withdrawals"
+    },
+    "verified_scholar": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the scholar is verified by admin"
+    }
+  },
+  "required": [
+    "user_type",
+    "profile_image",
+    "bank_details"
+  ]
+}

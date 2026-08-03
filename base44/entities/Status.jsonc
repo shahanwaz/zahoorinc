@@ -1,0 +1,66 @@
+{
+  "name": "Status",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user who posted the status"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Name of the user, cached for quick display"
+    },
+    "user_profile_image": {
+      "type": "string",
+      "description": "URL of the user's profile image, cached for quick display"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "image",
+        "video"
+      ],
+      "description": "Type of status content"
+    },
+    "content": {
+      "type": "string",
+      "description": "Text content or URL for media"
+    },
+    "caption": {
+      "type": "string",
+      "description": "Caption for image or video statuses"
+    },
+    "background": {
+      "type": "string",
+      "description": "Background color or gradient for text statuses"
+    },
+    "font_style": {
+      "type": "string",
+      "description": "Font style for text statuses"
+    },
+    "text_align": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ],
+      "default": "center",
+      "description": "Text alignment for text statuses"
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of user IDs who have viewed the status"
+    }
+  },
+  "required": [
+    "user_id",
+    "user_name",
+    "type",
+    "content"
+  ]
+}

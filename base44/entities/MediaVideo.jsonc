@@ -1,0 +1,120 @@
+{
+  "name": "MediaVideo",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the video"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "aza",
+        "quran_tafseer",
+        "history",
+        "youth_programs",
+        "majlis",
+        "lecture",
+        "duas",
+        "ziyarat",
+        "nauha",
+        "munqabat",
+        "books",
+        "kids",
+        "images",
+        "other"
+      ],
+      "description": "Category of the video"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Subcategory for Kids or Images"
+    },
+    "lecturer": {
+      "type": "string",
+      "description": "Name of the lecturer/speaker"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the video"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "URL of the video (YouTube, Vimeo, etc.)"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Uploaded file URL (PDF, Image)"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail image URL"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "youtube",
+        "vimeo",
+        "facebook",
+        "instagram",
+        "spotify",
+        "local",
+        "upload",
+        "other"
+      ],
+      "default": "youtube",
+      "description": "Source platform of the video"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "audio",
+        "pdf",
+        "image"
+      ],
+      "default": "video",
+      "description": "Type of media"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Duration of the video"
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of views"
+    },
+    "saved_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of user IDs who saved this"
+    },
+    "uploader_id": {
+      "type": "string",
+      "description": "ID of the user who uploaded"
+    },
+    "uploader_name": {
+      "type": "string",
+      "description": "Name of the uploader"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether video is featured"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for the video"
+    }
+  },
+  "required": [
+    "title",
+    "category"
+  ]
+}

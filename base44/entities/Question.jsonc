@@ -1,0 +1,132 @@
+{
+  "name": "Question",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Question title/subject"
+    },
+    "content": {
+      "type": "string",
+      "description": "Detailed question content"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "fiqh",
+        "history",
+        "duas",
+        "community",
+        "akhlaq",
+        "quran",
+        "hadith",
+        "general"
+      ],
+      "description": "Question category"
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Language code of the question"
+    },
+    "author_id": {
+      "type": "string",
+      "description": "ID of the user who posted the question"
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Cached name of the author"
+    },
+    "author_role": {
+      "type": "string",
+      "enum": [
+        "maulana",
+        "tutor",
+        "zakir",
+        "user"
+      ],
+      "description": "Role of the author"
+    },
+    "author_avatar": {
+      "type": "string",
+      "description": "Cached avatar URL of the author"
+    },
+    "media_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Attached images or videos"
+    },
+    "likes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of user IDs who liked the post"
+    },
+    "reactions": {
+      "type": "object",
+      "properties": {
+        "like": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "love": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "insight": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pray": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Different reaction types with user IDs"
+    },
+    "answer_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of answers"
+    },
+    "share_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times shared"
+    },
+    "view_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of views"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether question is featured"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags associated with the question"
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "category",
+    "author_id"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "name": "Anjuman",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the Anjuman"
+    },
+    "listing_type": {
+      "type": "string",
+      "enum": [
+        "anjuman",
+        "group",
+        "imambargah",
+        "masajid",
+        "other"
+      ],
+      "description": "The primary classification of the listing."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "religious",
+        "educational",
+        "youth",
+        "women",
+        "charity",
+        "event_organizer"
+      ],
+      "description": "Category of the Anjuman/listing"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Short tagline describing the Anjuman"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the Anjuman"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Logo/banner image URL"
+    },
+    "banner_url": {
+      "type": "string",
+      "description": "Header banner image URL"
+    },
+    "member_count": {
+      "type": "number",
+      "description": "Number of members"
+    },
+    "founded_year": {
+      "type": "number",
+      "description": "Year the Anjuman was founded"
+    },
+    "contact_info": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of activities the Anjuman organizes"
+    },
+    "is_verified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the Anjuman is verified"
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the listing is public or private"
+    },
+    "admin_id": {
+      "type": "string",
+      "description": "ID of the admin user"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of user IDs who are members"
+    }
+  },
+  "required": [
+    "name",
+    "listing_type",
+    "type",
+    "location"
+  ]
+}

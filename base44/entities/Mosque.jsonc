@@ -1,0 +1,75 @@
+{
+  "name": "Mosque",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Mosque or Imambargah name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "mosque",
+        "imambargah",
+        "hussainiya"
+      ],
+      "description": "Type of religious place"
+    },
+    "address": {
+      "type": "string",
+      "description": "Full address"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "website": {
+      "type": "string",
+      "description": "Website URL"
+    },
+    "prayer_times": {
+      "type": "object",
+      "properties": {
+        "fajr": {
+          "type": "string"
+        },
+        "zuhr": {
+          "type": "string"
+        },
+        "asr": {
+          "type": "string"
+        },
+        "maghrib": {
+          "type": "string"
+        },
+        "isha": {
+          "type": "string"
+        }
+      }
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Mosque image"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the mosque is verified"
+    }
+  },
+  "required": [
+    "name",
+    "address"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "name": "LiveStream",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the live stream"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the live stream"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "majlis",
+        "quran",
+        "lecture",
+        "dua",
+        "talk",
+        "other"
+      ],
+      "description": "Category of the stream"
+    },
+    "host_id": {
+      "type": "string",
+      "description": "ID of the user hosting the stream"
+    },
+    "host_name": {
+      "type": "string",
+      "description": "Cached name of the host"
+    },
+    "host_image": {
+      "type": "string",
+      "description": "Cached profile image of the host"
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the stream is public or followers-only"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "live",
+        "ended"
+      ],
+      "default": "scheduled",
+      "description": "Current status of the stream"
+    },
+    "stream_url": {
+      "type": "string",
+      "description": "URL of the live stream (RTMP or HLS)"
+    },
+    "recording_url": {
+      "type": "string",
+      "description": "URL of the recorded video (available after stream ends)"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail image for the stream"
+    },
+    "viewer_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Current number of viewers (for live streams)"
+    },
+    "total_views": {
+      "type": "number",
+      "default": 0,
+      "description": "Total views including replays"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the stream went live"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the stream ended"
+    },
+    "scheduled_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled start time for future streams"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Duration of the stream in seconds"
+    },
+    "recording_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the recording will be automatically deleted (7 days after stream ends)"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags associated with the stream"
+    }
+  },
+  "required": [
+    "title",
+    "category",
+    "host_id",
+    "host_name"
+  ]
+}

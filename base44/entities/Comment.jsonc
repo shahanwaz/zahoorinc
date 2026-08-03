@@ -1,0 +1,62 @@
+{
+  "name": "Comment",
+  "type": "object",
+  "properties": {
+    "answer_id": {
+      "type": "string",
+      "description": "ID of the answer being commented on"
+    },
+    "content": {
+      "type": "string",
+      "description": "Comment content"
+    },
+    "language": {
+      "type": "string",
+      "default": "en",
+      "description": "Language code of the comment"
+    },
+    "author_id": {
+      "type": "string",
+      "description": "ID of the user who posted the comment"
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Cached name of the author"
+    },
+    "author_role": {
+      "type": "string",
+      "enum": [
+        "maulana",
+        "tutor",
+        "zakir",
+        "user"
+      ],
+      "description": "Role of the author"
+    },
+    "author_avatar": {
+      "type": "string",
+      "description": "Cached avatar URL of the author"
+    },
+    "parent_comment_id": {
+      "type": "string",
+      "description": "ID of parent comment for nested replies"
+    },
+    "likes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of user IDs who liked the comment"
+    },
+    "reply_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of replies to this comment"
+    }
+  },
+  "required": [
+    "answer_id",
+    "content",
+    "author_id"
+  ]
+}
